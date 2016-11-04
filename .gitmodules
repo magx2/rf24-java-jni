@@ -1,0 +1,3 @@
+[submodule "native/RF24"]
+	path = native/RF24
+	url = https://github.com/TMRh20/RF24.git
