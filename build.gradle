@@ -88,7 +88,8 @@ task linkWrapper(type: Exec, dependsOn: ['compileWrapper', 'compileRf24', 'creat
 	commandLine "ld"
 	//noinspection GroovyAssignabilityCheck
 	args "-G", "$wrapperBuildDir/rf24bcmjava_wrap.o", "$wrapperBuildDir/RF24.o",
-			"-o", "${wrapperBuildDir}/librf24bcmjava.so"
+			"-o", "${wrapperBuildDir}/librf24bcmjava.so",
+			"-rpath,/usr/local/lib", "-L/usr/local/lib", "-lnetsnmp"
 }
 tasks.linkWrapper.dependsOn += tasks.compileWrapper
 
