@@ -1,0 +1,32 @@
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath 'com.github.rholder:gradle-one-jar:1.0.4'
+	}
+}
+
+group rootProject.group
+version rootProject.version
+
+apply plugin: 'java'
+apply plugin: 'gradle-one-jar'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'commons-cli', name: 'commons-cli', version: '1.3'
+    compile rootProject
+}
+
+task simpleExampleJar(type: OneJar) {
+	mainClass = 'pl.grzeslowski.smarthome.rf24.examples.SimpleExample'
+	archiveName = "$project.name-simple-example.jar"
+	binLib = files(rootProject.wrapperBuildDir + "/librf24bcmjava.so")
+}
+tasks.simpleExampleJar.dependsOn rootProject.tasks.linkWrapper

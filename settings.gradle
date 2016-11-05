@@ -1,2 +1,3 @@
 rootProject.name = 'rf24-java-jni'
+include 'examples'
 
