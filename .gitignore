@@ -20,6 +20,7 @@ bin/swig-3.0.10/preinst-swig
 bin/swig-3.0.10/swig
 bin/swig-3.0.10/swig.spec
 
+rf24bcmjava_wrap.o
 
 .idea/
 .gradle/
