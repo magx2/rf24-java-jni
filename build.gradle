@@ -1,0 +1,67 @@
+buildscript {
+	repositories {
+		mavenLocal()
+		mavenCentral()
+	}
+}
+
+group 'pl.grzeslowski.smarthome'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+sourceSets {
+	main {
+		java {
+			srcDir "out/main/java"
+		}
+	}
+}
+
+idea {
+	module {
+		sourceDirs += file("out/main/java");
+	}
+}
+
+ext {
+	javaJni = '/usr/lib/jvm/java-8-openjdk-amd64/include'
+	javaJniPlatformSpecyfic = "$javaJni/linux"
+}
+
+task compileSwig(type: Exec) {
+	final swigPackage = "${project.group}.generated"
+	commandLine "bin/swig-3.0.10/swig"
+	//noinspection GroovyAssignabilityCheck
+	args "-c++", '-java', '-outdir', "out/main/java/${swigPackage.replace(".", "/")}", "-package", "${swigPackage}", "swig-config/rf24bcmjava.i"
+	standardOutput = new ByteArrayOutputStream()
+}
+tasks.compileJava.dependsOn += tasks.compileSwig
+
+task cleanSwig(type: Delete) {
+	delete fileTree(dir: "out/main/java")
+	followSymlinks = false
+}
+
+task compileWrapper(type: Exec, dependsOn: 'compileSwig') {
+	commandLine "gcc"
+	//noinspection GroovyAssignabilityCheck
+	args "-fPIC", "-c", "swig-config/rf24bcmjava_wrap.cxx", "-I$javaJni", "-I$javaJniPlatformSpecyfic", "-Inative/RF24", "-Inative/RF24/utility"
+}
+
+task linkWrapper(type: Exec, dependsOn: 'compileWrapper') {
+	commandLine "ld"
+	//noinspection GroovyAssignabilityCheck
+	args "-G", "rf24bcmjava_wrap.o", "-o", "out/main/bin/librf24bcmjava.so"
+}
