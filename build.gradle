@@ -60,6 +60,7 @@ task copyIncludesForWrapper(type: Copy) {
 
 task cleanAfterCompileWrapper(type: Delete) {
 	delete files(pathToUtility)
+	delete file('rf24bcmjava_wrap.o')
 }
 tasks.clean.dependsOn += tasks.cleanAfterCompileWrapper
 
