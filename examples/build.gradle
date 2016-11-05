@@ -30,3 +30,10 @@ task simpleExampleJar(type: OneJar) {
 	binLib = files(rootProject.wrapperBuildDir + "/librf24bcmjava.so")
 }
 tasks.simpleExampleJar.dependsOn rootProject.tasks.linkWrapper
+
+task runSimpleExample(type: Exec, dependsOn: 'simpleExampleJar') {
+	workingDir "$project.buildDir/libs"
+	commandLine "java"
+	//noinspection GroovyAssignabilityCheck
+	args "-jar", "-Djava.library.path=.", tasks.simpleExampleJar.archiveName
+}
