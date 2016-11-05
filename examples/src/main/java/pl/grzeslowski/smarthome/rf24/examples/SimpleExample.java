@@ -10,7 +10,7 @@ public class SimpleExample {
 
     private static final String CMD_CE = "ce";
     private static final String CMD_CSN = "csn";
-    private static final String CMD_CLOCK_SPEED = "Clock speed";
+    private static final String CMD_CLOCK_SPEED = "clock_speed";
 
     private static final short DEFAULT_CE = 22;
     private static final short DEFAULT_CSN = 8;
