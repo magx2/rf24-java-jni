@@ -77,10 +77,17 @@ task compileWrapper(type: Exec, dependsOn: ['copyIncludesForWrapper', 'createBui
 			"-Inative/RF24", "-Inative/RF24/utility", "-o", "$wrapperBuildDir/rf24bcmjava_wrap.o"
 }
 
-task linkWrapper(type: Exec, dependsOn: ['compileWrapper', 'createBuildDirForWrapper']) {
+task compileRf24(type: Exec, dependsOn: 'compileWrapper') {
+	commandLine "gcc"
+	//noinspection GroovyAssignabilityCheck
+	args "-fPIC", "-c", "native/RF24/RF24.cpp", "-o", "$wrapperBuildDir/RF24.o"
+}
+
+task linkWrapper(type: Exec, dependsOn: ['compileWrapper', 'compileRf24', 'createBuildDirForWrapper']) {
 	commandLine "ld"
 	//noinspection GroovyAssignabilityCheck
-	args "-G", "$wrapperBuildDir/rf24bcmjava_wrap.o", "-o", "${wrapperBuildDir}/librf24bcmjava.so"
+	args "-G", "$wrapperBuildDir/rf24bcmjava_wrap.o", "$wrapperBuildDir/RF24.o",
+			"-o", "${wrapperBuildDir}/librf24bcmjava.so"
 }
 tasks.linkWrapper.dependsOn += tasks.compileWrapper
 
