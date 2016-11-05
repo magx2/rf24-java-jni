@@ -58,12 +58,12 @@ task copyIncludesForWrapper(type: Copy) {
 	into pathToUtility
 }
 
-task cleanFilesForIncludesInWrapper(type: Delete) {
+task cleanAfterCompileWrapper(type: Delete) {
 	delete files(pathToUtility)
 }
-tasks.clean.dependsOn += tasks.cleanFilesForIncludesInWrapper
+tasks.clean.dependsOn += tasks.cleanAfterCompileWrapper
 
-task compileWrapper(type: Exec, dependsOn: 'copyIncludesForWrapper') {
+task compileWrapper(type: Exec, dependsOn: 'cleanAfterCompileWrapper') {
 	commandLine "gcc"
 	//noinspection GroovyAssignabilityCheck
 	args "-fPIC", "-c", "swig-config/rf24bcmjava_wrap.cxx", "-I$javaJni", "-I$javaJniPlatformSpecyfic", "-Inative/RF24", "-Inative/RF24/utility"
