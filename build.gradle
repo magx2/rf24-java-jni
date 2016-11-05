@@ -5,7 +5,7 @@ buildscript {
 	}
 }
 
-group 'pl.grzeslowski.smarthome'
+group 'pl.grzeslowski.smarthome.rf24'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
@@ -21,20 +21,6 @@ dependencies {
 	testCompile group: 'junit', name: 'junit', version: '4.11'
 }
 
-sourceSets {
-	main {
-		java {
-			srcDir "out/main/java"
-		}
-	}
-}
-
-idea {
-	module {
-		sourceDirs += file("out/main/java");
-	}
-}
-
 ext {
 	javaJni = '/usr/lib/jvm/java-8-openjdk-amd64/include'
 	javaJniPlatformSpecyfic = "$javaJni/linux"
@@ -44,10 +30,9 @@ task compileSwig(type: Exec) {
 	final swigPackage = "${project.group}.generated"
 	commandLine "bin/swig-3.0.10/swig"
 	//noinspection GroovyAssignabilityCheck
-	args "-c++", '-java', '-outdir', "out/main/java/${swigPackage.replace(".", "/")}", "-package", "${swigPackage}", "swig-config/rf24bcmjava.i"
+	args "-c++", '-java', '-outdir', "src/main/java/${swigPackage.replace(".", "/")}", "-package", "${swigPackage}", "swig-config/rf24bcmjava.i"
 	standardOutput = new ByteArrayOutputStream()
 }
-tasks.compileJava.dependsOn += tasks.compileSwig
 
 task cleanSwig(type: Delete) {
 	delete fileTree(dir: "out/main/java")
