@@ -62,3 +62,12 @@ task linkWrapper(type: Exec, dependsOn: 'compileWrapper') {
 	args "-G", "rf24bcmjava_wrap.o", "-o", "build/librf24bcmjava.so"
 }
 tasks.linkWrapper.dependsOn += tasks.compileWrapper
+
+allprojects {
+	tasks.withType(Exec) {
+		doFirst {
+			println "Cmd to be executed:"
+			println " > " + commandLine + " " + (args ?: []).join(' ')
+		}
+	}
+}
