@@ -35,6 +35,8 @@ dependencies {
 ext {
 	javaJni = ext.has('javaJni') ? javaJni : '/usr/lib/jvm/java-8-openjdk-amd64/include'
 	javaJniPlatformSpecyfic = ext.has('javaJniPlatformSpecyfic') ? javaJniPlatformSpecyfic : "$javaJni/linux"
+
+	utilityFolder = ext.has('utilityFolder') ? utilityFolder : "RPi"
 }
 
 task compileSwig(type: Exec) {
@@ -50,7 +52,18 @@ task cleanSwig(type: Delete) {
 	followSymlinks = false
 }
 
-task compileWrapper(type: Exec) {
+task copyIncludesForWrapper(type: Copy) {
+	final pathToUtility = 'native/RF24/utility'
+	from "$pathToUtility/$utilityFolder"
+	into pathToUtility
+}
+
+task cleanFilesForIncludesInWrapper(type: Delete) {
+	delete fileTree(dir: "pathToUtility")
+}
+tasks.clean.dependsOn += tasks.cleanFilesForIncludesInWrapper
+
+task compileWrapper(type: Exec, dependsOn: 'copyIncludesForWrapper') {
 	commandLine "gcc"
 	//noinspection GroovyAssignabilityCheck
 	args "-fPIC", "-c", "swig-config/rf24bcmjava_wrap.cxx", "-I$javaJni", "-I$javaJniPlatformSpecyfic", "-Inative/RF24", "-Inative/RF24/utility"
