@@ -34,7 +34,7 @@ dependencies {
 
 ext {
 	javaJni = '/usr/lib/jvm/java-8-openjdk-amd64/include'
-	javaJniPlatformSpecyfic = javaJniPlatformSpecyfic ?: "$javaJni/linux"
+	javaJniPlatformSpecyfic = ext.has('javaJniPlatformSpecyfic') ? javaJniPlatformSpecyfic : "$javaJni/linux"
 }
 
 task compileSwig(type: Exec) {
