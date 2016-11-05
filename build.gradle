@@ -54,7 +54,7 @@ task cleanSwig(type: Delete) {
 }
 
 task copyIncludesForWrapper(type: Copy) {
-	from $utilityFolder
+	from utilityFolder
 	into pathToUtility
 }
 
