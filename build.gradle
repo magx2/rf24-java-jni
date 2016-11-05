@@ -73,16 +73,17 @@ task cleanAfterCompileWrapper(type: Delete) {
 }
 tasks.clean.dependsOn += tasks.cleanAfterCompileWrapper
 
-task compileWrapper(type: Exec, dependsOn: 'copyIncludesForWrapper') {
+task compileWrapper(type: Exec, dependsOn: ['copyIncludesForWrapper', 'createBuildDirForWrapper']) {
 	commandLine "gcc"
 	//noinspection GroovyAssignabilityCheck
-	args "-fPIC", "-c", "swig-config/rf24bcmjava_wrap.cxx", "-I$javaJni", "-I$javaJniPlatformSpecyfic", "-Inative/RF24", "-Inative/RF24/utility"
+	args "-fPIC", "-c", "swig-config/rf24bcmjava_wrap.cxx", "-I$javaJni", "-I$javaJniPlatformSpecyfic",
+			"-Inative/RF24", "-Inative/RF24/utility", "-o", "$wrapperBuildDir/rf24bcmjava_wrap.o"
 }
 
 task linkWrapper(type: Exec, dependsOn: ['compileWrapper', 'createBuildDirForWrapper']) {
 	commandLine "ld"
 	//noinspection GroovyAssignabilityCheck
-	args "-G", "rf24bcmjava_wrap.o", "-o", "${wrapperBuildDir}/librf24bcmjava.so"
+	args "-G", "$wrapperBuildDir/rf24bcmjava_wrap.o", "-o", "${wrapperBuildDir}/librf24bcmjava.so"
 }
 tasks.linkWrapper.dependsOn += tasks.compileWrapper
 
