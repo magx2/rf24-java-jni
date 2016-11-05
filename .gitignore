@@ -22,3 +22,6 @@ bin/swig-3.0.10/preinst-swig
 bin/swig-3.0.10/swig
 bin/swig-3.0.10/swig.spec
 
+
+.idea/
+.gradle/
