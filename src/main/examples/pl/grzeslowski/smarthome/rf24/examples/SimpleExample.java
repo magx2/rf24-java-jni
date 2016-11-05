@@ -3,9 +3,11 @@ package pl.grzeslowski.smarthome.rf24.examples;
 import org.apache.commons.cli.*;
 import pl.grzeslowski.smarthome.rf24.generated.RF24;
 
-import java.math.BigInteger;
-
 public class SimpleExample {
+    static {
+        System.loadLibrary("rf24bcmjava");
+    }
+
     private static final String CMD_CE = "ce";
     private static final String CMD_CSN = "csn";
     private static final String CMD_CLOCK_SPEED = "Clock speed";
