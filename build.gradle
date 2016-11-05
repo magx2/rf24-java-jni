@@ -71,9 +71,13 @@ task compileWrapper(type: Exec, dependsOn: 'copyIncludesForWrapper') {
 }
 
 task linkWrapper(type: Exec, dependsOn: 'compileWrapper') {
+	final buildDir = file(project.buildDir) + "/wrapper"
+	if(!buildDir.exists()) {
+		buildDir.mkdirs()
+	}
 	commandLine "ld"
 	//noinspection GroovyAssignabilityCheck
-	args "-G", "rf24bcmjava_wrap.o", "-o", "$project.buildDir/librf24bcmjava.so"
+	args "-G", "rf24bcmjava_wrap.o", "-o", "${buildDir.absolute}/librf24bcmjava.so"
 }
 tasks.linkWrapper.dependsOn += tasks.compileWrapper
 
