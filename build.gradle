@@ -59,7 +59,7 @@ task copyIncludesForWrapper(type: Copy) {
 }
 
 task cleanFilesForIncludesInWrapper(type: Delete) {
-	delete files(dir: pathToUtility)
+	delete files(pathToUtility)
 }
 tasks.clean.dependsOn += tasks.cleanFilesForIncludesInWrapper
 
