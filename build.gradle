@@ -50,7 +50,7 @@ task cleanSwig(type: Delete) {
 	followSymlinks = false
 }
 
-task compileWrapper(type: Exec, dependsOn: 'compileSwig') {
+task compileWrapper(type: Exec) {
 	commandLine "gcc"
 	//noinspection GroovyAssignabilityCheck
 	args "-fPIC", "-c", "swig-config/rf24bcmjava_wrap.cxx", "-I$javaJni", "-I$javaJniPlatformSpecyfic", "-Inative/RF24", "-Inative/RF24/utility"
