@@ -6,7 +6,7 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
-package pl.grzeslowski.smarthome.generated;
+package pl.grzeslowski.smarthome.rf24.generated;
 
 public final class rf24_crclength_e {
   public final static rf24_crclength_e RF24_CRC_DISABLED = new rf24_crclength_e("RF24_CRC_DISABLED", rf24bcmjavaJNI.RF24_CRC_DISABLED_get());

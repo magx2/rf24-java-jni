@@ -6,7 +6,7 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
-package pl.grzeslowski.smarthome.generated;
+package pl.grzeslowski.smarthome.rf24.generated;
 
 public final class rf24_pa_dbm_e {
   public final static rf24_pa_dbm_e RF24_PA_MIN = new rf24_pa_dbm_e("RF24_PA_MIN", rf24bcmjavaJNI.RF24_PA_MIN_get());
