@@ -10,9 +10,9 @@ public class SimpleExample {
     private static final String CMD_CSN = "csn";
     private static final String CMD_CLOCK_SPEED = "Clock speed";
 
-    private static final short DEFAULT_CE = 1;
-    private static final short DEFAULT_CSN = 2;
-    private static final short DEFAULT_CLOCK_SPEED = 8;
+    private static final short DEFAULT_CE = 22;
+    private static final short DEFAULT_CSN = 8;
+    private static final short DEFAULT_CLOCK_SPEED = 32;
 
     private final CommandLineParser parser = new DefaultParser();
     private final Options options = new Options();
