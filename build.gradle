@@ -61,3 +61,4 @@ task linkWrapper(type: Exec, dependsOn: 'compileWrapper') {
 	//noinspection GroovyAssignabilityCheck
 	args "-G", "rf24bcmjava_wrap.o", "-o", "build/librf24bcmjava.so"
 }
+tasks.linkWrapper.dependsOn += tasks.compileWrapper
