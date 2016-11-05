@@ -1,6 +1,8 @@
 package pl.grzeslowski.smarthome.rf24.examples;
 
 import org.apache.commons.cli.*;
+import pl.grzeslowski.smarthome.rf24.MyLong;
+import pl.grzeslowski.smarthome.rf24.MyShort;
 import pl.grzeslowski.smarthome.rf24.generated.RF24;
 
 public class SimpleExample {
@@ -34,12 +36,16 @@ public class SimpleExample {
     private void run(String[] args) throws ParseException {
         CommandLine cmd = parser.parse( options, args);
 
-        final RF24 radio = new RF24(cePin(cmd), csnPin(cmd), clockSpeed(cmd));
+        final RF24 radio = new RF24(
+                MyShort.create(cePin(cmd)),
+                MyShort.create(csnPin(cmd)),
+                MyLong.create(clockSpeed(cmd))
+        );
 
         radio.begin();
 
         // optionally, increase the delay between retries & # of retries
-        radio.setRetries((short) 15, (short) 15);
+//        radio.setRetries((short) 15, (short) 15);
         // Dump the configuration of the rf unit for debugging
         radio.printDetails();
     }

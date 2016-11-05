@@ -230,9 +230,6 @@ static void SWIGUNUSED SWIG_JavaThrowException(JNIEnv *jenv, SWIG_JavaExceptionC
 #define SWIG_contract_assert(nullreturn, expr, msg) if (!(expr)) {SWIG_JavaThrowException(jenv, SWIG_JavaIllegalArgumentException, msg); return nullreturn; } else
 
 
-#include <stdint.h>		// Use the C99 official header
-
-
 #include "RF24.h"
 
 
@@ -240,7 +237,7 @@ static void SWIGUNUSED SWIG_JavaThrowException(JNIEnv *jenv, SWIG_JavaExceptionC
 extern "C" {
 #endif
 
-SWIGEXPORT jint JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1PA_1MIN_1get(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jint JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1PA_1MIN_1get(JNIEnv *jenv, jclass jcls) {
   jint jresult = 0 ;
   rf24_pa_dbm_e result;
   
@@ -252,7 +249,7 @@ SWIGEXPORT jint JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_R
 }
 
 
-SWIGEXPORT jint JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_11MBPS_1get(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jint JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_11MBPS_1get(JNIEnv *jenv, jclass jcls) {
   jint jresult = 0 ;
   rf24_datarate_e result;
   
@@ -264,7 +261,7 @@ SWIGEXPORT jint JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_R
 }
 
 
-SWIGEXPORT jint JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1CRC_1DISABLED_1get(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jint JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1CRC_1DISABLED_1get(JNIEnv *jenv, jclass jcls) {
   jint jresult = 0 ;
   rf24_crclength_e result;
   
@@ -276,41 +273,71 @@ SWIGEXPORT jint JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_R
 }
 
 
-SWIGEXPORT jlong JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_new_1RF24_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jshort jarg1, jshort jarg2) {
+SWIGEXPORT jlong JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_new_1RF24_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2) {
   jlong jresult = 0 ;
   uint8_t arg1 ;
   uint8_t arg2 ;
+  uint8_t *argp1 ;
+  uint8_t *argp2 ;
   RF24 *result = 0 ;
   
   (void)jenv;
   (void)jcls;
-  arg1 = (uint8_t)jarg1; 
-  arg2 = (uint8_t)jarg2; 
+  argp1 = *(uint8_t **)&jarg1; 
+  if (!argp1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null uint8_t");
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = *(uint8_t **)&jarg2; 
+  if (!argp2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null uint8_t");
+    return 0;
+  }
+  arg2 = *argp2; 
   result = (RF24 *)new RF24(arg1,arg2);
   *(RF24 **)&jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT jlong JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_new_1RF24_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jshort jarg1, jshort jarg2, jlong jarg3) {
+SWIGEXPORT jlong JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_new_1RF24_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jlong jarg2, jlong jarg3) {
   jlong jresult = 0 ;
   uint8_t arg1 ;
   uint8_t arg2 ;
   uint32_t arg3 ;
+  uint8_t *argp1 ;
+  uint8_t *argp2 ;
+  uint32_t *argp3 ;
   RF24 *result = 0 ;
   
   (void)jenv;
   (void)jcls;
-  arg1 = (uint8_t)jarg1; 
-  arg2 = (uint8_t)jarg2; 
-  arg3 = (uint32_t)jarg3; 
+  argp1 = *(uint8_t **)&jarg1; 
+  if (!argp1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null uint8_t");
+    return 0;
+  }
+  arg1 = *argp1; 
+  argp2 = *(uint8_t **)&jarg2; 
+  if (!argp2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null uint8_t");
+    return 0;
+  }
+  arg2 = *argp2; 
+  argp3 = *(uint32_t **)&jarg3; 
+  if (!argp3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null uint32_t");
+    return 0;
+  }
+  arg3 = *argp3; 
   result = (RF24 *)new RF24(arg1,arg2,arg3);
   *(RF24 **)&jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1begin(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1begin(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   RF24 *arg1 = (RF24 *) 0 ;
   bool result;
@@ -325,7 +352,7 @@ SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJ
 }
 
 
-SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1startListening(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1startListening(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   RF24 *arg1 = (RF24 *) 0 ;
   
   (void)jenv;
@@ -336,7 +363,7 @@ SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_R
 }
 
 
-SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1stopListening(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1stopListening(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   RF24 *arg1 = (RF24 *) 0 ;
   
   (void)jenv;
@@ -347,7 +374,7 @@ SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_R
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1available_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1available_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   RF24 *arg1 = (RF24 *) 0 ;
   bool result;
@@ -362,51 +389,53 @@ SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJ
 }
 
 
-SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1read(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyteArray jarg2, jshort jarg3) {
+SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1read(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3) {
   RF24 *arg1 = (RF24 *) 0 ;
   void *arg2 = (void *) 0 ;
   uint8_t arg3 ;
+  uint8_t *argp3 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(RF24 **)&jarg1; 
-  {
-    arg2 = (void *) jenv->GetPrimitiveArrayCritical(jarg2, 0);
+  arg2 = *(void **)&jarg2; 
+  argp3 = *(uint8_t **)&jarg3; 
+  if (!argp3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null uint8_t");
+    return ;
   }
-  arg3 = (uint8_t)jarg3; 
+  arg3 = *argp3; 
   (arg1)->read(arg2,arg3);
-  {
-    jenv->ReleasePrimitiveArrayCritical(jarg2, arg2, 0);
-  }
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1write_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyteArray jarg2, jshort jarg3) {
+SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1write_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3) {
   jboolean jresult = 0 ;
   RF24 *arg1 = (RF24 *) 0 ;
   void *arg2 = (void *) 0 ;
   uint8_t arg3 ;
+  uint8_t *argp3 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(RF24 **)&jarg1; 
-  {
-    arg2 = (void *) jenv->GetPrimitiveArrayCritical(jarg2, 0);
+  arg2 = *(void **)&jarg2; 
+  argp3 = *(uint8_t **)&jarg3; 
+  if (!argp3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null uint8_t");
+    return 0;
   }
-  arg3 = (uint8_t)jarg3; 
+  arg3 = *argp3; 
   result = (bool)(arg1)->write((void const *)arg2,arg3);
   jresult = (jboolean)result; 
-  {
-    jenv->ReleasePrimitiveArrayCritical(jarg2, arg2, 0);
-  }
   return jresult;
 }
 
 
-SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1openWritingPipe_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyteArray jarg2) {
+SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1openWritingPipe_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   RF24 *arg1 = (RF24 *) 0 ;
   uint8_t *arg2 = (uint8_t *) 0 ;
   
@@ -414,37 +443,33 @@ SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_R
   (void)jcls;
   (void)jarg1_;
   arg1 = *(RF24 **)&jarg1; 
-  {
-    arg2 = (uint8_t *) jenv->GetPrimitiveArrayCritical(jarg2, 0);
-  }
+  arg2 = *(uint8_t **)&jarg2; 
   (arg1)->openWritingPipe((uint8_t const *)arg2);
-  {
-    jenv->ReleasePrimitiveArrayCritical(jarg2, arg2, 0);
-  }
 }
 
 
-SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1openReadingPipe_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jshort jarg2, jbyteArray jarg3) {
+SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1openReadingPipe_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3) {
   RF24 *arg1 = (RF24 *) 0 ;
   uint8_t arg2 ;
   uint8_t *arg3 = (uint8_t *) 0 ;
+  uint8_t *argp2 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(RF24 **)&jarg1; 
-  arg2 = (uint8_t)jarg2; 
-  {
-    arg3 = (uint8_t *) jenv->GetPrimitiveArrayCritical(jarg3, 0);
+  argp2 = *(uint8_t **)&jarg2; 
+  if (!argp2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null uint8_t");
+    return ;
   }
+  arg2 = *argp2; 
+  arg3 = *(uint8_t **)&jarg3; 
   (arg1)->openReadingPipe(arg2,(uint8_t const *)arg3);
-  {
-    jenv->ReleasePrimitiveArrayCritical(jarg3, arg3, 0);
-  }
 }
 
 
-SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1printDetails(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1printDetails(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   RF24 *arg1 = (RF24 *) 0 ;
   
   (void)jenv;
@@ -455,41 +480,24 @@ SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_R
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1available_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jshortArray jarg2) {
+SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1available_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   jboolean jresult = 0 ;
   RF24 *arg1 = (RF24 *) 0 ;
   uint8_t *arg2 = (uint8_t *) 0 ;
-  uint8_t temp2 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(RF24 **)&jarg1; 
-  {
-    if (!jarg2) {
-      SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "array null");
-      return 0;
-    }
-    if (jenv->GetArrayLength(jarg2) == 0) {
-      SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, "Array must contain at least 1 element");
-      return 0;
-    }
-    temp2 = (uint8_t)0;
-    arg2 = &temp2; 
-  }
+  arg2 = *(uint8_t **)&jarg2; 
   result = (bool)(arg1)->available(arg2);
   jresult = (jboolean)result; 
-  {
-    jshort jvalue = (jshort)temp2;
-    jenv->SetShortArrayRegion(jarg2, 0, 1, &jvalue);
-  }
-  
   return jresult;
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1rxFifoFull(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1rxFifoFull(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   RF24 *arg1 = (RF24 *) 0 ;
   bool result;
@@ -504,7 +512,7 @@ SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJ
 }
 
 
-SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1powerDown(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1powerDown(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   RF24 *arg1 = (RF24 *) 0 ;
   
   (void)jenv;
@@ -515,7 +523,7 @@ SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_R
 }
 
 
-SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1powerUp(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1powerUp(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   RF24 *arg1 = (RF24 *) 0 ;
   
   (void)jenv;
@@ -526,109 +534,119 @@ SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_R
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1write_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyteArray jarg2, jshort jarg3, jboolean jarg4) {
+SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1write_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3, jboolean jarg4) {
   jboolean jresult = 0 ;
   RF24 *arg1 = (RF24 *) 0 ;
   void *arg2 = (void *) 0 ;
   uint8_t arg3 ;
   bool arg4 ;
+  uint8_t *argp3 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(RF24 **)&jarg1; 
-  {
-    arg2 = (void *) jenv->GetPrimitiveArrayCritical(jarg2, 0);
+  arg2 = *(void **)&jarg2; 
+  argp3 = *(uint8_t **)&jarg3; 
+  if (!argp3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null uint8_t");
+    return 0;
   }
-  arg3 = (uint8_t)jarg3; 
+  arg3 = *argp3; 
   arg4 = jarg4 ? true : false; 
   result = (bool)(arg1)->write((void const *)arg2,arg3,arg4);
   jresult = (jboolean)result; 
-  {
-    jenv->ReleasePrimitiveArrayCritical(jarg2, arg2, 0);
-  }
   return jresult;
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1writeFast_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyteArray jarg2, jshort jarg3) {
+SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1writeFast_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3) {
   jboolean jresult = 0 ;
   RF24 *arg1 = (RF24 *) 0 ;
   void *arg2 = (void *) 0 ;
   uint8_t arg3 ;
+  uint8_t *argp3 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(RF24 **)&jarg1; 
-  {
-    arg2 = (void *) jenv->GetPrimitiveArrayCritical(jarg2, 0);
+  arg2 = *(void **)&jarg2; 
+  argp3 = *(uint8_t **)&jarg3; 
+  if (!argp3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null uint8_t");
+    return 0;
   }
-  arg3 = (uint8_t)jarg3; 
+  arg3 = *argp3; 
   result = (bool)(arg1)->writeFast((void const *)arg2,arg3);
   jresult = (jboolean)result; 
-  {
-    jenv->ReleasePrimitiveArrayCritical(jarg2, arg2, 0);
-  }
   return jresult;
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1writeFast_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyteArray jarg2, jshort jarg3, jboolean jarg4) {
+SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1writeFast_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3, jboolean jarg4) {
   jboolean jresult = 0 ;
   RF24 *arg1 = (RF24 *) 0 ;
   void *arg2 = (void *) 0 ;
   uint8_t arg3 ;
   bool arg4 ;
+  uint8_t *argp3 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(RF24 **)&jarg1; 
-  {
-    arg2 = (void *) jenv->GetPrimitiveArrayCritical(jarg2, 0);
+  arg2 = *(void **)&jarg2; 
+  argp3 = *(uint8_t **)&jarg3; 
+  if (!argp3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null uint8_t");
+    return 0;
   }
-  arg3 = (uint8_t)jarg3; 
+  arg3 = *argp3; 
   arg4 = jarg4 ? true : false; 
   result = (bool)(arg1)->writeFast((void const *)arg2,arg3,arg4);
   jresult = (jboolean)result; 
-  {
-    jenv->ReleasePrimitiveArrayCritical(jarg2, arg2, 0);
-  }
   return jresult;
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1writeBlocking(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyteArray jarg2, jshort jarg3, jlong jarg4) {
+SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1writeBlocking(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3, jlong jarg4) {
   jboolean jresult = 0 ;
   RF24 *arg1 = (RF24 *) 0 ;
   void *arg2 = (void *) 0 ;
   uint8_t arg3 ;
   uint32_t arg4 ;
+  uint8_t *argp3 ;
+  uint32_t *argp4 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(RF24 **)&jarg1; 
-  {
-    arg2 = (void *) jenv->GetPrimitiveArrayCritical(jarg2, 0);
+  arg2 = *(void **)&jarg2; 
+  argp3 = *(uint8_t **)&jarg3; 
+  if (!argp3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null uint8_t");
+    return 0;
   }
-  arg3 = (uint8_t)jarg3; 
-  arg4 = (uint32_t)jarg4; 
+  arg3 = *argp3; 
+  argp4 = *(uint32_t **)&jarg4; 
+  if (!argp4) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null uint32_t");
+    return 0;
+  }
+  arg4 = *argp4; 
   result = (bool)(arg1)->writeBlocking((void const *)arg2,arg3,arg4);
   jresult = (jboolean)result; 
-  {
-    jenv->ReleasePrimitiveArrayCritical(jarg2, arg2, 0);
-  }
   return jresult;
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1txStandBy_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1txStandBy_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   RF24 *arg1 = (RF24 *) 0 ;
   bool result;
@@ -643,18 +661,24 @@ SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJ
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1txStandBy_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jboolean jarg3) {
+SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1txStandBy_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jboolean jarg3) {
   jboolean jresult = 0 ;
   RF24 *arg1 = (RF24 *) 0 ;
   uint32_t arg2 ;
   bool arg3 ;
+  uint32_t *argp2 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(RF24 **)&jarg1; 
-  arg2 = (uint32_t)jarg2; 
+  argp2 = *(uint32_t **)&jarg2; 
+  if (!argp2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null uint32_t");
+    return 0;
+  }
+  arg2 = *argp2; 
   arg3 = jarg3 ? true : false; 
   result = (bool)(arg1)->txStandBy(arg2,arg3);
   jresult = (jboolean)result; 
@@ -662,46 +686,59 @@ SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJ
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1txStandBy_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1txStandBy_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   jboolean jresult = 0 ;
   RF24 *arg1 = (RF24 *) 0 ;
   uint32_t arg2 ;
+  uint32_t *argp2 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(RF24 **)&jarg1; 
-  arg2 = (uint32_t)jarg2; 
+  argp2 = *(uint32_t **)&jarg2; 
+  if (!argp2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null uint32_t");
+    return 0;
+  }
+  arg2 = *argp2; 
   result = (bool)(arg1)->txStandBy(arg2);
   jresult = (jboolean)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1writeAckPayload(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jshort jarg2, jbyteArray jarg3, jshort jarg4) {
+SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1writeAckPayload(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3, jlong jarg4) {
   RF24 *arg1 = (RF24 *) 0 ;
   uint8_t arg2 ;
   void *arg3 = (void *) 0 ;
   uint8_t arg4 ;
+  uint8_t *argp2 ;
+  uint8_t *argp4 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(RF24 **)&jarg1; 
-  arg2 = (uint8_t)jarg2; 
-  {
-    arg3 = (void *) jenv->GetPrimitiveArrayCritical(jarg3, 0);
+  argp2 = *(uint8_t **)&jarg2; 
+  if (!argp2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null uint8_t");
+    return ;
   }
-  arg4 = (uint8_t)jarg4; 
+  arg2 = *argp2; 
+  arg3 = *(void **)&jarg3; 
+  argp4 = *(uint8_t **)&jarg4; 
+  if (!argp4) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null uint8_t");
+    return ;
+  }
+  arg4 = *argp4; 
   (arg1)->writeAckPayload(arg2,(void const *)arg3,arg4);
-  {
-    jenv->ReleasePrimitiveArrayCritical(jarg3, arg3, 0);
-  }
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1isAckPayloadAvailable(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1isAckPayloadAvailable(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   RF24 *arg1 = (RF24 *) 0 ;
   bool result;
@@ -716,143 +753,107 @@ SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJ
 }
 
 
-SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1whatHappened(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbooleanArray jarg2, jbooleanArray jarg3, jbooleanArray jarg4) {
+SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1whatHappened(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3, jlong jarg4) {
   RF24 *arg1 = (RF24 *) 0 ;
   bool *arg2 = 0 ;
   bool *arg3 = 0 ;
   bool *arg4 = 0 ;
-  bool temp2 ;
-  bool temp3 ;
-  bool temp4 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(RF24 **)&jarg1; 
-  {
-    if (!jarg2) {
-      SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "array null");
-      return ;
-    }
-    if (jenv->GetArrayLength(jarg2) == 0) {
-      SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, "Array must contain at least 1 element");
-      return ;
-    }
-    temp2 = false;
-    arg2 = &temp2; 
-  }
-  {
-    if (!jarg3) {
-      SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "array null");
-      return ;
-    }
-    if (jenv->GetArrayLength(jarg3) == 0) {
-      SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, "Array must contain at least 1 element");
-      return ;
-    }
-    temp3 = false;
-    arg3 = &temp3; 
-  }
-  {
-    if (!jarg4) {
-      SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "array null");
-      return ;
-    }
-    if (jenv->GetArrayLength(jarg4) == 0) {
-      SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, "Array must contain at least 1 element");
-      return ;
-    }
-    temp4 = false;
-    arg4 = &temp4; 
-  }
+  arg2 = *(bool **)&jarg2;
+  if (!arg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "bool & reference is null");
+    return ;
+  } 
+  arg3 = *(bool **)&jarg3;
+  if (!arg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "bool & reference is null");
+    return ;
+  } 
+  arg4 = *(bool **)&jarg4;
+  if (!arg4) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "bool & reference is null");
+    return ;
+  } 
   (arg1)->whatHappened(*arg2,*arg3,*arg4);
-  {
-    jboolean jvalue = (jboolean)temp2;
-    jenv->SetBooleanArrayRegion(jarg2, 0, 1, &jvalue);
-  }
-  {
-    jboolean jvalue = (jboolean)temp3;
-    jenv->SetBooleanArrayRegion(jarg3, 0, 1, &jvalue);
-  }
-  {
-    jboolean jvalue = (jboolean)temp4;
-    jenv->SetBooleanArrayRegion(jarg4, 0, 1, &jvalue);
-  }
-  
-  
-  
 }
 
 
-SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1startFastWrite_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyteArray jarg2, jshort jarg3, jboolean jarg4, jboolean jarg5) {
+SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1startFastWrite_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3, jboolean jarg4, jboolean jarg5) {
   RF24 *arg1 = (RF24 *) 0 ;
   void *arg2 = (void *) 0 ;
   uint8_t arg3 ;
   bool arg4 ;
   bool arg5 ;
+  uint8_t *argp3 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(RF24 **)&jarg1; 
-  {
-    arg2 = (void *) jenv->GetPrimitiveArrayCritical(jarg2, 0);
+  arg2 = *(void **)&jarg2; 
+  argp3 = *(uint8_t **)&jarg3; 
+  if (!argp3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null uint8_t");
+    return ;
   }
-  arg3 = (uint8_t)jarg3; 
+  arg3 = *argp3; 
   arg4 = jarg4 ? true : false; 
   arg5 = jarg5 ? true : false; 
   (arg1)->startFastWrite((void const *)arg2,arg3,arg4,arg5);
-  {
-    jenv->ReleasePrimitiveArrayCritical(jarg2, arg2, 0);
-  }
 }
 
 
-SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1startFastWrite_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyteArray jarg2, jshort jarg3, jboolean jarg4) {
+SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1startFastWrite_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3, jboolean jarg4) {
   RF24 *arg1 = (RF24 *) 0 ;
   void *arg2 = (void *) 0 ;
   uint8_t arg3 ;
   bool arg4 ;
+  uint8_t *argp3 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(RF24 **)&jarg1; 
-  {
-    arg2 = (void *) jenv->GetPrimitiveArrayCritical(jarg2, 0);
+  arg2 = *(void **)&jarg2; 
+  argp3 = *(uint8_t **)&jarg3; 
+  if (!argp3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null uint8_t");
+    return ;
   }
-  arg3 = (uint8_t)jarg3; 
+  arg3 = *argp3; 
   arg4 = jarg4 ? true : false; 
   (arg1)->startFastWrite((void const *)arg2,arg3,arg4);
-  {
-    jenv->ReleasePrimitiveArrayCritical(jarg2, arg2, 0);
-  }
 }
 
 
-SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1startWrite(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jbyteArray jarg2, jshort jarg3, jboolean jarg4) {
+SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1startWrite(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3, jboolean jarg4) {
   RF24 *arg1 = (RF24 *) 0 ;
   void *arg2 = (void *) 0 ;
   uint8_t arg3 ;
   bool arg4 ;
+  uint8_t *argp3 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(RF24 **)&jarg1; 
-  {
-    arg2 = (void *) jenv->GetPrimitiveArrayCritical(jarg2, 0);
+  arg2 = *(void **)&jarg2; 
+  argp3 = *(uint8_t **)&jarg3; 
+  if (!argp3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null uint8_t");
+    return ;
   }
-  arg3 = (uint8_t)jarg3; 
+  arg3 = *argp3; 
   arg4 = jarg4 ? true : false; 
   (arg1)->startWrite((void const *)arg2,arg3,arg4);
-  {
-    jenv->ReleasePrimitiveArrayCritical(jarg2, arg2, 0);
-  }
 }
 
 
-SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1reUseTX(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1reUseTX(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   RF24 *arg1 = (RF24 *) 0 ;
   
   (void)jenv;
@@ -863,8 +864,8 @@ SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_R
 }
 
 
-SWIGEXPORT jshort JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1flush_1tx(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jshort jresult = 0 ;
+SWIGEXPORT jlong JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1flush_1tx(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
   RF24 *arg1 = (RF24 *) 0 ;
   uint8_t result;
   
@@ -872,13 +873,13 @@ SWIGEXPORT jshort JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI
   (void)jcls;
   (void)jarg1_;
   arg1 = *(RF24 **)&jarg1; 
-  result = (uint8_t)(arg1)->flush_tx();
-  jresult = (jshort)result; 
+  result = (arg1)->flush_tx();
+  *(uint8_t **)&jresult = new uint8_t((const uint8_t &)result); 
   return jresult;
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1testCarrier(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1testCarrier(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   RF24 *arg1 = (RF24 *) 0 ;
   bool result;
@@ -893,7 +894,7 @@ SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJ
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1testRPD(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1testRPD(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   RF24 *arg1 = (RF24 *) 0 ;
   bool result;
@@ -908,7 +909,7 @@ SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJ
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1isValid(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1isValid(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   RF24 *arg1 = (RF24 *) 0 ;
   bool result;
@@ -923,20 +924,26 @@ SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJ
 }
 
 
-SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1closeReadingPipe(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jshort jarg2) {
+SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1closeReadingPipe(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   RF24 *arg1 = (RF24 *) 0 ;
   uint8_t arg2 ;
+  uint8_t *argp2 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(RF24 **)&jarg1; 
-  arg2 = (uint8_t)jarg2; 
+  argp2 = *(uint8_t **)&jarg2; 
+  if (!argp2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null uint8_t");
+    return ;
+  }
+  arg2 = *argp2; 
   (arg1)->closeReadingPipe(arg2);
 }
 
 
-SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1failureDetected_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1failureDetected_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
   RF24 *arg1 = (RF24 *) 0 ;
   bool arg2 ;
   
@@ -949,7 +956,7 @@ SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_R
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1failureDetected_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1failureDetected_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   RF24 *arg1 = (RF24 *) 0 ;
   bool result;
@@ -964,49 +971,73 @@ SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJ
 }
 
 
-SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1setAddressWidth(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jshort jarg2) {
+SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1setAddressWidth(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   RF24 *arg1 = (RF24 *) 0 ;
   uint8_t arg2 ;
+  uint8_t *argp2 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(RF24 **)&jarg1; 
-  arg2 = (uint8_t)jarg2; 
+  argp2 = *(uint8_t **)&jarg2; 
+  if (!argp2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null uint8_t");
+    return ;
+  }
+  arg2 = *argp2; 
   (arg1)->setAddressWidth(arg2);
 }
 
 
-SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1setRetries(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jshort jarg2, jshort jarg3) {
+SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1setRetries(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3) {
   RF24 *arg1 = (RF24 *) 0 ;
   uint8_t arg2 ;
   uint8_t arg3 ;
+  uint8_t *argp2 ;
+  uint8_t *argp3 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(RF24 **)&jarg1; 
-  arg2 = (uint8_t)jarg2; 
-  arg3 = (uint8_t)jarg3; 
+  argp2 = *(uint8_t **)&jarg2; 
+  if (!argp2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null uint8_t");
+    return ;
+  }
+  arg2 = *argp2; 
+  argp3 = *(uint8_t **)&jarg3; 
+  if (!argp3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null uint8_t");
+    return ;
+  }
+  arg3 = *argp3; 
   (arg1)->setRetries(arg2,arg3);
 }
 
 
-SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1setChannel(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jshort jarg2) {
+SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1setChannel(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   RF24 *arg1 = (RF24 *) 0 ;
   uint8_t arg2 ;
+  uint8_t *argp2 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(RF24 **)&jarg1; 
-  arg2 = (uint8_t)jarg2; 
+  argp2 = *(uint8_t **)&jarg2; 
+  if (!argp2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null uint8_t");
+    return ;
+  }
+  arg2 = *argp2; 
   (arg1)->setChannel(arg2);
 }
 
 
-SWIGEXPORT jshort JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1getChannel(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jshort jresult = 0 ;
+SWIGEXPORT jlong JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1getChannel(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
   RF24 *arg1 = (RF24 *) 0 ;
   uint8_t result;
   
@@ -1014,27 +1045,33 @@ SWIGEXPORT jshort JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI
   (void)jcls;
   (void)jarg1_;
   arg1 = *(RF24 **)&jarg1; 
-  result = (uint8_t)(arg1)->getChannel();
-  jresult = (jshort)result; 
+  result = (arg1)->getChannel();
+  *(uint8_t **)&jresult = new uint8_t((const uint8_t &)result); 
   return jresult;
 }
 
 
-SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1setPayloadSize(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jshort jarg2) {
+SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1setPayloadSize(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   RF24 *arg1 = (RF24 *) 0 ;
   uint8_t arg2 ;
+  uint8_t *argp2 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(RF24 **)&jarg1; 
-  arg2 = (uint8_t)jarg2; 
+  argp2 = *(uint8_t **)&jarg2; 
+  if (!argp2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null uint8_t");
+    return ;
+  }
+  arg2 = *argp2; 
   (arg1)->setPayloadSize(arg2);
 }
 
 
-SWIGEXPORT jshort JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1getPayloadSize(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jshort jresult = 0 ;
+SWIGEXPORT jlong JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1getPayloadSize(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
   RF24 *arg1 = (RF24 *) 0 ;
   uint8_t result;
   
@@ -1042,14 +1079,14 @@ SWIGEXPORT jshort JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI
   (void)jcls;
   (void)jarg1_;
   arg1 = *(RF24 **)&jarg1; 
-  result = (uint8_t)(arg1)->getPayloadSize();
-  jresult = (jshort)result; 
+  result = (arg1)->getPayloadSize();
+  *(uint8_t **)&jresult = new uint8_t((const uint8_t &)result); 
   return jresult;
 }
 
 
-SWIGEXPORT jshort JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1getDynamicPayloadSize(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jshort jresult = 0 ;
+SWIGEXPORT jlong JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1getDynamicPayloadSize(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
   RF24 *arg1 = (RF24 *) 0 ;
   uint8_t result;
   
@@ -1057,13 +1094,13 @@ SWIGEXPORT jshort JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI
   (void)jcls;
   (void)jarg1_;
   arg1 = *(RF24 **)&jarg1; 
-  result = (uint8_t)(arg1)->getDynamicPayloadSize();
-  jresult = (jshort)result; 
+  result = (arg1)->getDynamicPayloadSize();
+  *(uint8_t **)&jresult = new uint8_t((const uint8_t &)result); 
   return jresult;
 }
 
 
-SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1enableAckPayload(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1enableAckPayload(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   RF24 *arg1 = (RF24 *) 0 ;
   
   (void)jenv;
@@ -1074,7 +1111,7 @@ SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_R
 }
 
 
-SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1enableDynamicPayloads(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1enableDynamicPayloads(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   RF24 *arg1 = (RF24 *) 0 ;
   
   (void)jenv;
@@ -1085,7 +1122,7 @@ SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_R
 }
 
 
-SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1enableDynamicAck(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1enableDynamicAck(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   RF24 *arg1 = (RF24 *) 0 ;
   
   (void)jenv;
@@ -1096,7 +1133,7 @@ SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_R
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1isPVariant(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1isPVariant(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   RF24 *arg1 = (RF24 *) 0 ;
   bool result;
@@ -1111,7 +1148,7 @@ SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJ
 }
 
 
-SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1setAutoAck_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1setAutoAck_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
   RF24 *arg1 = (RF24 *) 0 ;
   bool arg2 ;
   
@@ -1124,36 +1161,48 @@ SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_R
 }
 
 
-SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1setAutoAck_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jshort jarg2, jboolean jarg3) {
+SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1setAutoAck_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jboolean jarg3) {
   RF24 *arg1 = (RF24 *) 0 ;
   uint8_t arg2 ;
   bool arg3 ;
+  uint8_t *argp2 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(RF24 **)&jarg1; 
-  arg2 = (uint8_t)jarg2; 
+  argp2 = *(uint8_t **)&jarg2; 
+  if (!argp2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null uint8_t");
+    return ;
+  }
+  arg2 = *argp2; 
   arg3 = jarg3 ? true : false; 
   (arg1)->setAutoAck(arg2,arg3);
 }
 
 
-SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1setPALevel(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jshort jarg2) {
+SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1setPALevel(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   RF24 *arg1 = (RF24 *) 0 ;
   uint8_t arg2 ;
+  uint8_t *argp2 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(RF24 **)&jarg1; 
-  arg2 = (uint8_t)jarg2; 
+  argp2 = *(uint8_t **)&jarg2; 
+  if (!argp2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null uint8_t");
+    return ;
+  }
+  arg2 = *argp2; 
   (arg1)->setPALevel(arg2);
 }
 
 
-SWIGEXPORT jshort JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1getPALevel(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jshort jresult = 0 ;
+SWIGEXPORT jlong JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1getPALevel(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
   RF24 *arg1 = (RF24 *) 0 ;
   uint8_t result;
   
@@ -1161,13 +1210,13 @@ SWIGEXPORT jshort JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI
   (void)jcls;
   (void)jarg1_;
   arg1 = *(RF24 **)&jarg1; 
-  result = (uint8_t)(arg1)->getPALevel();
-  jresult = (jshort)result; 
+  result = (arg1)->getPALevel();
+  *(uint8_t **)&jresult = new uint8_t((const uint8_t &)result); 
   return jresult;
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1setDataRate(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1setDataRate(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jboolean jresult = 0 ;
   RF24 *arg1 = (RF24 *) 0 ;
   rf24_datarate_e arg2 ;
@@ -1184,7 +1233,7 @@ SWIGEXPORT jboolean JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJ
 }
 
 
-SWIGEXPORT jint JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1getDataRate(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1getDataRate(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   RF24 *arg1 = (RF24 *) 0 ;
   rf24_datarate_e result;
@@ -1199,7 +1248,7 @@ SWIGEXPORT jint JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_R
 }
 
 
-SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1setCRCLength(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1setCRCLength(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   RF24 *arg1 = (RF24 *) 0 ;
   rf24_crclength_e arg2 ;
   
@@ -1212,7 +1261,7 @@ SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_R
 }
 
 
-SWIGEXPORT jint JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1getCRCLength(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1getCRCLength(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   RF24 *arg1 = (RF24 *) 0 ;
   rf24_crclength_e result;
@@ -1227,7 +1276,7 @@ SWIGEXPORT jint JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_R
 }
 
 
-SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1disableCRC(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1disableCRC(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   RF24 *arg1 = (RF24 *) 0 ;
   
   (void)jenv;
@@ -1238,7 +1287,7 @@ SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_R
 }
 
 
-SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1maskIRQ(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2, jboolean jarg3, jboolean jarg4) {
+SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1maskIRQ(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2, jboolean jarg3, jboolean jarg4) {
   RF24 *arg1 = (RF24 *) 0 ;
   bool arg2 ;
   bool arg3 ;
@@ -1255,85 +1304,53 @@ SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_R
 }
 
 
-SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1openReadingPipe_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jshort jarg2, jobject jarg3) {
+SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1openReadingPipe_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jlong jarg3) {
   RF24 *arg1 = (RF24 *) 0 ;
   uint8_t arg2 ;
   uint64_t arg3 ;
+  uint8_t *argp2 ;
+  uint64_t *argp3 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(RF24 **)&jarg1; 
-  arg2 = (uint8_t)jarg2; 
-  {
-    jclass clazz;
-    jmethodID mid;
-    jbyteArray ba;
-    jbyte* bae;
-    jsize sz;
-    int i;
-    
-    if (!jarg3) {
-      SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "BigInteger null");
-      return ;
-    }
-    clazz = jenv->GetObjectClass(jarg3);
-    mid = jenv->GetMethodID(clazz, "toByteArray", "()[B");
-    ba = (jbyteArray)jenv->CallObjectMethod(jarg3, mid);
-    bae = jenv->GetByteArrayElements(ba, 0);
-    sz = jenv->GetArrayLength(ba);
-    arg3 = 0;
-    if (sz > 0) {
-      arg3 = (uint64_t)(signed char)bae[0];
-      for(i=1; i<sz; i++) {
-        arg3 = (arg3 << 8) | (uint64_t)(unsigned char)bae[i];
-      }
-    }
-    jenv->ReleaseByteArrayElements(ba, bae, 0);
+  argp2 = *(uint8_t **)&jarg2; 
+  if (!argp2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null uint8_t");
+    return ;
   }
+  arg2 = *argp2; 
+  argp3 = *(uint64_t **)&jarg3; 
+  if (!argp3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null uint64_t");
+    return ;
+  }
+  arg3 = *argp3; 
   (arg1)->openReadingPipe(arg2,arg3);
 }
 
 
-SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_RF24_1openWritingPipe_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jobject jarg2) {
+SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_RF24_1openWritingPipe_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   RF24 *arg1 = (RF24 *) 0 ;
   uint64_t arg2 ;
+  uint64_t *argp2 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(RF24 **)&jarg1; 
-  {
-    jclass clazz;
-    jmethodID mid;
-    jbyteArray ba;
-    jbyte* bae;
-    jsize sz;
-    int i;
-    
-    if (!jarg2) {
-      SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "BigInteger null");
-      return ;
-    }
-    clazz = jenv->GetObjectClass(jarg2);
-    mid = jenv->GetMethodID(clazz, "toByteArray", "()[B");
-    ba = (jbyteArray)jenv->CallObjectMethod(jarg2, mid);
-    bae = jenv->GetByteArrayElements(ba, 0);
-    sz = jenv->GetArrayLength(ba);
-    arg2 = 0;
-    if (sz > 0) {
-      arg2 = (uint64_t)(signed char)bae[0];
-      for(i=1; i<sz; i++) {
-        arg2 = (arg2 << 8) | (uint64_t)(unsigned char)bae[i];
-      }
-    }
-    jenv->ReleaseByteArrayElements(ba, bae, 0);
+  argp2 = *(uint64_t **)&jarg2; 
+  if (!argp2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null uint64_t");
+    return ;
   }
+  arg2 = *argp2; 
   (arg1)->openWritingPipe(arg2);
 }
 
 
-SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_generated_rf24bcmjavaJNI_delete_1RF24(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_pl_grzeslowski_smarthome_rf24_generated_rf24bcmjavaJNI_delete_1RF24(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   RF24 *arg1 = (RF24 *) 0 ;
   
   (void)jenv;
