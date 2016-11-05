@@ -67,7 +67,7 @@ allprojects {
 	tasks.withType(Exec) {
 		doFirst {
 			println "Cmd to be executed:"
-			println " > " + commandLine + " " + (args ?: []).join(' ')
+			println " > " + commandLine.join(' ')
 		}
 	}
 }
