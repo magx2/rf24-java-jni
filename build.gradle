@@ -38,6 +38,8 @@ ext {
 
 	pathToUtility = 'native/RF24/utility'
 	utilityFolder = pathToUtility + (ext.has('utilityFolder') ? utilityFolder : "/RPi")
+
+	wrapperBuildDir = ext.has('buildDir') ? wrapperBuildDir : "$project.buildDir/wrapper"
 }
 
 task compileSwig(type: Exec) {
@@ -51,6 +53,13 @@ task compileSwig(type: Exec) {
 task cleanSwig(type: Delete) {
 	delete fileTree(dir: "out/main/java")
 	followSymlinks = false
+}
+
+task createBuildDirForWrapper << {
+	final buildDir = file(wrapperBuildDir)
+	if(!buildDir.exists()) {
+		buildDir.mkdirs()
+	}
 }
 
 task copyIncludesForWrapper(type: Copy) {
@@ -70,14 +79,10 @@ task compileWrapper(type: Exec, dependsOn: 'copyIncludesForWrapper') {
 	args "-fPIC", "-c", "swig-config/rf24bcmjava_wrap.cxx", "-I$javaJni", "-I$javaJniPlatformSpecyfic", "-Inative/RF24", "-Inative/RF24/utility"
 }
 
-task linkWrapper(type: Exec, dependsOn: 'compileWrapper') {
-	final buildDir = file(project.buildDir) + "/wrapper"
-	if(!buildDir.exists()) {
-		buildDir.mkdirs()
-	}
+task linkWrapper(type: Exec, dependsOn: ['compileWrapper', 'createBuildDirForWrapper']) {
 	commandLine "ld"
 	//noinspection GroovyAssignabilityCheck
-	args "-G", "rf24bcmjava_wrap.o", "-o", "${buildDir.absolute}/librf24bcmjava.so"
+	args "-G", "rf24bcmjava_wrap.o", "-o", "${wrapperBuildDir}/librf24bcmjava.so"
 }
 tasks.linkWrapper.dependsOn += tasks.compileWrapper
 
