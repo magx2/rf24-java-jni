@@ -36,7 +36,8 @@ ext {
 	javaJni = ext.has('javaJni') ? javaJni : '/usr/lib/jvm/java-8-openjdk-amd64/include'
 	javaJniPlatformSpecyfic = ext.has('javaJniPlatformSpecyfic') ? javaJniPlatformSpecyfic : "$javaJni/linux"
 
-	utilityFolder = ext.has('utilityFolder') ? utilityFolder : "RPi"
+	pathToUtility = 'native/RF24/utility'
+	utilityFolder = pathToUtility + (ext.has('utilityFolder') ? utilityFolder : "/RPi")
 }
 
 task compileSwig(type: Exec) {
@@ -53,13 +54,12 @@ task cleanSwig(type: Delete) {
 }
 
 task copyIncludesForWrapper(type: Copy) {
-	final pathToUtility = 'native/RF24/utility'
-	from "$pathToUtility/$utilityFolder"
+	from $utilityFolder
 	into pathToUtility
 }
 
 task cleanFilesForIncludesInWrapper(type: Delete) {
-	delete fileTree(dir: "pathToUtility")
+	delete fileTree(dir: pathToUtility)
 }
 tasks.clean.dependsOn += tasks.cleanFilesForIncludesInWrapper
 
