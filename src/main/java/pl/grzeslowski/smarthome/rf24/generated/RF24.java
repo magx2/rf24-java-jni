@@ -59,28 +59,28 @@ public class RF24 {
     return rf24bcmjavaJNI.RF24_available__SWIG_0(swigCPtr, this);
   }
 
-  public void read(byte[] buf, short len) {
-    rf24bcmjavaJNI.RF24_read(swigCPtr, this, buf, len);
+  public void read(SWIGTYPE_p_void buf, short len) {
+    rf24bcmjavaJNI.RF24_read(swigCPtr, this, SWIGTYPE_p_void.getCPtr(buf), len);
   }
 
-  public boolean write(byte[] buf, short len) {
-    return rf24bcmjavaJNI.RF24_write__SWIG_0(swigCPtr, this, buf, len);
+  public boolean write(SWIGTYPE_p_void buf, short len) {
+    return rf24bcmjavaJNI.RF24_write__SWIG_0(swigCPtr, this, SWIGTYPE_p_void.getCPtr(buf), len);
   }
 
-  public void openWritingPipe(byte[] address) {
-    rf24bcmjavaJNI.RF24_openWritingPipe__SWIG_0(swigCPtr, this, address);
+  public void openWritingPipe(SWIGTYPE_p_unsigned_char address) {
+    rf24bcmjavaJNI.RF24_openWritingPipe__SWIG_0(swigCPtr, this, SWIGTYPE_p_unsigned_char.getCPtr(address));
   }
 
-  public void openReadingPipe(short number, byte[] address) {
-    rf24bcmjavaJNI.RF24_openReadingPipe__SWIG_0(swigCPtr, this, number, address);
+  public void openReadingPipe(short number, SWIGTYPE_p_unsigned_char address) {
+    rf24bcmjavaJNI.RF24_openReadingPipe__SWIG_0(swigCPtr, this, number, SWIGTYPE_p_unsigned_char.getCPtr(address));
   }
 
   public void printDetails() {
     rf24bcmjavaJNI.RF24_printDetails(swigCPtr, this);
   }
 
-  public boolean available(short[] pipe_num) {
-    return rf24bcmjavaJNI.RF24_available__SWIG_1(swigCPtr, this, pipe_num);
+  public boolean available(SWIGTYPE_p_unsigned_char pipe_num) {
+    return rf24bcmjavaJNI.RF24_available__SWIG_1(swigCPtr, this, SWIGTYPE_p_unsigned_char.getCPtr(pipe_num));
   }
 
   public boolean rxFifoFull() {
@@ -95,20 +95,20 @@ public class RF24 {
     rf24bcmjavaJNI.RF24_powerUp(swigCPtr, this);
   }
 
-  public boolean write(byte[] buf, short len, boolean multicast) {
-    return rf24bcmjavaJNI.RF24_write__SWIG_1(swigCPtr, this, buf, len, multicast);
+  public boolean write(SWIGTYPE_p_void buf, short len, boolean multicast) {
+    return rf24bcmjavaJNI.RF24_write__SWIG_1(swigCPtr, this, SWIGTYPE_p_void.getCPtr(buf), len, multicast);
   }
 
-  public boolean writeFast(byte[] buf, short len) {
-    return rf24bcmjavaJNI.RF24_writeFast__SWIG_0(swigCPtr, this, buf, len);
+  public boolean writeFast(SWIGTYPE_p_void buf, short len) {
+    return rf24bcmjavaJNI.RF24_writeFast__SWIG_0(swigCPtr, this, SWIGTYPE_p_void.getCPtr(buf), len);
   }
 
-  public boolean writeFast(byte[] buf, short len, boolean multicast) {
-    return rf24bcmjavaJNI.RF24_writeFast__SWIG_1(swigCPtr, this, buf, len, multicast);
+  public boolean writeFast(SWIGTYPE_p_void buf, short len, boolean multicast) {
+    return rf24bcmjavaJNI.RF24_writeFast__SWIG_1(swigCPtr, this, SWIGTYPE_p_void.getCPtr(buf), len, multicast);
   }
 
-  public boolean writeBlocking(byte[] buf, short len, long timeout) {
-    return rf24bcmjavaJNI.RF24_writeBlocking(swigCPtr, this, buf, len, timeout);
+  public boolean writeBlocking(SWIGTYPE_p_void buf, short len, long timeout) {
+    return rf24bcmjavaJNI.RF24_writeBlocking(swigCPtr, this, SWIGTYPE_p_void.getCPtr(buf), len, timeout);
   }
 
   public boolean txStandBy() {
@@ -123,28 +123,28 @@ public class RF24 {
     return rf24bcmjavaJNI.RF24_txStandBy__SWIG_2(swigCPtr, this, timeout);
   }
 
-  public void writeAckPayload(short pipe, byte[] buf, short len) {
-    rf24bcmjavaJNI.RF24_writeAckPayload(swigCPtr, this, pipe, buf, len);
+  public void writeAckPayload(short pipe, SWIGTYPE_p_void buf, short len) {
+    rf24bcmjavaJNI.RF24_writeAckPayload(swigCPtr, this, pipe, SWIGTYPE_p_void.getCPtr(buf), len);
   }
 
   public boolean isAckPayloadAvailable() {
     return rf24bcmjavaJNI.RF24_isAckPayloadAvailable(swigCPtr, this);
   }
 
-  public void whatHappened(boolean[] tx_ok, boolean[] tx_fail, boolean[] rx_ready) {
-    rf24bcmjavaJNI.RF24_whatHappened(swigCPtr, this, tx_ok, tx_fail, rx_ready);
+  public void whatHappened(SWIGTYPE_p_bool tx_ok, SWIGTYPE_p_bool tx_fail, SWIGTYPE_p_bool rx_ready) {
+    rf24bcmjavaJNI.RF24_whatHappened(swigCPtr, this, SWIGTYPE_p_bool.getCPtr(tx_ok), SWIGTYPE_p_bool.getCPtr(tx_fail), SWIGTYPE_p_bool.getCPtr(rx_ready));
   }
 
-  public void startFastWrite(byte[] buf, short len, boolean multicast, boolean startTx) {
-    rf24bcmjavaJNI.RF24_startFastWrite__SWIG_0(swigCPtr, this, buf, len, multicast, startTx);
+  public void startFastWrite(SWIGTYPE_p_void buf, short len, boolean multicast, boolean startTx) {
+    rf24bcmjavaJNI.RF24_startFastWrite__SWIG_0(swigCPtr, this, SWIGTYPE_p_void.getCPtr(buf), len, multicast, startTx);
   }
 
-  public void startFastWrite(byte[] buf, short len, boolean multicast) {
-    rf24bcmjavaJNI.RF24_startFastWrite__SWIG_1(swigCPtr, this, buf, len, multicast);
+  public void startFastWrite(SWIGTYPE_p_void buf, short len, boolean multicast) {
+    rf24bcmjavaJNI.RF24_startFastWrite__SWIG_1(swigCPtr, this, SWIGTYPE_p_void.getCPtr(buf), len, multicast);
   }
 
-  public void startWrite(byte[] buf, short len, boolean multicast) {
-    rf24bcmjavaJNI.RF24_startWrite(swigCPtr, this, buf, len, multicast);
+  public void startWrite(SWIGTYPE_p_void buf, short len, boolean multicast) {
+    rf24bcmjavaJNI.RF24_startWrite(swigCPtr, this, SWIGTYPE_p_void.getCPtr(buf), len, multicast);
   }
 
   public void reUseTX() {
