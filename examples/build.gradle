@@ -37,3 +37,10 @@ task runSimpleExample(type: Exec, dependsOn: 'simpleExampleJar') {
 	//noinspection GroovyAssignabilityCheck
 	args "-jar", "-Djava.library.path=.", tasks.simpleExampleJar.archiveName
 }
+
+tasks.runSimpleExample.doFirst {
+	copy {
+		from rootProject.wrapperBuildDir
+		into "$project.buildDir/libs"
+	}
+}
