@@ -20,9 +20,12 @@ public class SimpleExample {
     private final Options options = new Options();
 
     public static void main(String[] args) throws Exception {
+        System.out.println("Start...");
         new SimpleExample().run(args);
         //noinspection InfiniteLoopStatement
-        for(;;) {}
+        for(int i = 1;;) {
+            System.out.println("For " + i++);
+        }
     }
 
     public SimpleExample() {
@@ -32,14 +35,17 @@ public class SimpleExample {
     }
 
     private void run(String[] args) throws ParseException {
+        System.out.println("SimpleExample.run(args)");
         CommandLine cmd = parser.parse( options, args);
 
+        System.out.println("new RF24(...)");
         final RF24 radio = new RF24(
                 cePin(cmd),
                 csnPin(cmd),
                 clockSpeed(cmd)
         );
 
+        System.out.println("radio.begin();");
         radio.begin();
 
         // optionally, increase the delay between retries & # of retries
