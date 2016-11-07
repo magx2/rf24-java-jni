@@ -30,7 +30,7 @@ task simpleExampleJar(type: OneJar) {
 	archiveName = "$project.name-simple-example.jar"
 	binLib = files(rootProject.wrapperBuildDir + "/librf24bcmjava.so")
 }
-tasks.simpleExampleJar.dependsOn rootProject.tasks.linkWrapper
+tasks.simpleExampleJar.dependsOn rootProject.tasks.compileRf24
 
 task runSimpleExample(type: Exec, dependsOn: 'simpleExampleJar') {
 	group 'Run Examples'

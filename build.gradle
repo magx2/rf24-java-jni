@@ -113,18 +113,6 @@ task compileRf24(type: Exec, dependsOn: 'compileWrapper') {
 			"-o", "${wrapperBuildDir}/librf24bcmjava.so"
 }
 
-task linkWrapper(type: Exec, dependsOn: ['compileWrapper', 'compileRf24', 'createBuildDirForWrapper']) {
-	group 'Build wrapper'
-//	commandLine "ld"
-	commandLine "pwd"
-	//noinspection GroovyAssignabilityCheck
-//	args "-G", "$wrapperBuildDir/rf24bcmjava_wrap.o", "$wrapperBuildDir/RF24.o",
-//			"-o", "${wrapperBuildDir}/librf24bcmjava.so",
-//			"-rpath", "$project.projectDir/native/RF24",
-//			"-L$project.projectDir/native/RF24" //, "-lnetsnmp"
-}
-tasks.linkWrapper.dependsOn += tasks.compileWrapper
-
 allprojects {
 	tasks.withType(Exec) {
 		doFirst {
