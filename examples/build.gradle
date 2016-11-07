@@ -35,9 +35,7 @@ tasks.simpleExampleJar.dependsOn rootProject.tasks.linkWrapper
 task runSimpleExample(type: Exec, dependsOn: 'simpleExampleJar') {
 	group 'Run Examples'
 	workingDir "$project.buildDir/libs"
-	commandLine "sudo java"
-	//noinspection GroovyAssignabilityCheck
-	args "-jar", "-Djava.library.path=$rootProject.wrapperBuildDir", tasks.simpleExampleJar.archiveName
+	commandLine "sudo", "java", "-jar", "-Djava.library.path=$rootProject.wrapperBuildDir", tasks.simpleExampleJar.archiveName
 }
 
 tasks.runSimpleExample.doFirst {
