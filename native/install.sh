@@ -13,7 +13,7 @@ INSTALL_DIR="/rf24libs"
 ROOT_PATH=${INSTALL_PATH}
 ROOT_PATH+=${INSTALL_DIR}
 
-echo "Install ncurses library, recommended for RF24Gateway [Y/n]? "
+echo "Installing ncurses library..."
 sudo apt-get install libncurses5-dev
 
 echo "Installing RF24 Repo..."
