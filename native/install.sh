@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Taken from http://tmrh20.github.io/RF24Installer/RPi/install.sh
+
 INSTALL_PATH="."
 INSTALL_DIR="/rf24libs"
 
