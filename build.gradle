@@ -94,7 +94,7 @@ task compileRf24(type: Exec, dependsOn: 'compileWrapper') {
 	group 'Build wrapper'
 	commandLine "gcc"
 	//noinspection GroovyAssignabilityCheck
-	args "-fPIC", "-c",
+	args "-shared", "-lstdc++",
 			"$wrapperBuildDir/rf24bcmjava_wrap.o",
 			"native/RF24/librf24.so.1.1.7",
 //			"swig-config/rf24bcmjava_wrap.cxx",
