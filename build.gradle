@@ -98,17 +98,19 @@ task compileRf24(type: Exec, dependsOn: 'compileWrapper') {
 			"$wrapperBuildDir/rf24bcmjava_wrap.o",
 			"native/RF24/librf24.so.1.1.7",
 //			"swig-config/rf24bcmjava_wrap.cxx",
-			"-o", "$wrapperBuildDir/RF24.o"
+//			"-o", "$wrapperBuildDir/RF24.o"
+			"-o", "${wrapperBuildDir}/librf24bcmjava.so"
 }
 
 task linkWrapper(type: Exec, dependsOn: ['compileWrapper', 'compileRf24', 'createBuildDirForWrapper']) {
 	group 'Build wrapper'
-	commandLine "ld"
+//	commandLine "ld"
+	commandLine "pwd"
 	//noinspection GroovyAssignabilityCheck
-	args "-G", "$wrapperBuildDir/rf24bcmjava_wrap.o", "$wrapperBuildDir/RF24.o",
-			"-o", "${wrapperBuildDir}/librf24bcmjava.so",
-			"-rpath", "$project.projectDir/native/RF24",
-			"-L$project.projectDir/native/RF24" //, "-lnetsnmp"
+//	args "-G", "$wrapperBuildDir/rf24bcmjava_wrap.o", "$wrapperBuildDir/RF24.o",
+//			"-o", "${wrapperBuildDir}/librf24bcmjava.so",
+//			"-rpath", "$project.projectDir/native/RF24",
+//			"-L$project.projectDir/native/RF24" //, "-lnetsnmp"
 }
 tasks.linkWrapper.dependsOn += tasks.compileWrapper
 
