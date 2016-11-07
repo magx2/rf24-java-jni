@@ -65,31 +65,23 @@ task createBuildDirForWrapper << {
 
 task configureRf24NativeLib(type: Exec) {
 	workingDir './native/RF24'
-	commandLine './configure'
-	//noinspection GroovyAssignabilityCheck
-	args "--header-dir=$headersDir"
+	commandLine './configure', "--header-dir=$headersDir"
 }
 
 task cleanConfigureRf24NativeLib(type: Exec) {
 	workingDir './native/RF24'
-	commandLine 'make'
-	//noinspection GroovyAssignabilityCheck
-	args 'cleanconfig'
+	commandLine 'make', 'cleanconfig'
 }
 tasks.clean.dependsOn += tasks.cleanConfigureRf24NativeLib
 
 task makeRf24NativeLib(type: Exec, dependsOn: 'configureRf24NativeLib') {
 	workingDir './native/RF24'
 	commandLine 'sudo', 'make', 'install'
-	//noinspection GroovyAssignabilityCheck
-//	args 'make install'
 }
 
 task cleanRf24NativeLib(type: Exec) {
 	workingDir './native/RF24'
-	commandLine 'make'
-	//noinspection GroovyAssignabilityCheck
-	args 'clean'
+	commandLine 'make', 'clean'
 }
 tasks.clean.dependsOn += tasks.cleanRf24NativeLib
 
@@ -118,8 +110,6 @@ task compileRf24(type: Exec, dependsOn: 'compileWrapper') {
 			"native/RF24/spi.o",
 			"native/RF24/interrupt.o",
 			"native/RF24/bcm2835.o",
-//			"swig-config/rf24bcmjava_wrap.cxx",
-//			"-o", "$wrapperBuildDir/RF24.o"
 			"-o", "${wrapperBuildDir}/librf24bcmjava.so"
 }
 
