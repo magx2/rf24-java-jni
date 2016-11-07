@@ -1,0 +1,57 @@
+task createBuildDirForWrapper << {
+	group 'Build wrapper'
+	final buildDir = file(wrapperBuildDir)
+	if(!buildDir.exists()) {
+		buildDir.mkdirs()
+	}
+}
+
+task configureRf24NativeLib(type: Exec) {
+	workingDir './native/RF24'
+	commandLine './configure', "--header-dir=$headersDir"
+}
+
+task cleanConfigureRf24NativeLib(type: Exec) {
+	workingDir './native/RF24'
+	commandLine 'make', 'cleanconfig'
+}
+tasks.clean.dependsOn += tasks.cleanConfigureRf24NativeLib
+
+task makeRf24NativeLib(type: Exec, dependsOn: 'configureRf24NativeLib') {
+	workingDir './native/RF24'
+	commandLine 'sudo', 'make', 'install'
+}
+
+task cleanRf24NativeLib(type: Exec) {
+	workingDir './native/RF24'
+	commandLine 'make', 'clean'
+}
+tasks.clean.dependsOn += tasks.cleanRf24NativeLib
+
+task compileWrapper(type: Exec, dependsOn: ['createBuildDirForWrapper', 'makeRf24NativeLib']) {
+	group 'Build wrapper'
+	commandLine "g++"
+	//noinspection GroovyAssignabilityCheck
+	args "-fPIC", "-c",
+			"swig-config/rf24bcmjava_wrap.cxx",
+			"-I$javaJni",
+			"-I$javaJniPlatformSpecyfic",
+			"-I./native/RF24",
+			"-I./native/RF24/utility",
+			"-o", "$wrapperBuildDir/rf24bcmjava_wrap.o",
+			"-include", "./native/RF24/RF24.h"
+}
+
+task compileRf24(type: Exec, dependsOn: 'compileWrapper') {
+	group 'Build wrapper'
+	commandLine "gcc"
+	//noinspection GroovyAssignabilityCheck
+	args "-shared", "-lstdc++",
+			"$wrapperBuildDir/rf24bcmjava_wrap.o",
+			"native/RF24/librf24.so.1.1.7",
+			"native/RF24/RF24.o",
+			"native/RF24/spi.o",
+			"native/RF24/interrupt.o",
+			"native/RF24/bcm2835.o",
+			"-o", "${wrapperBuildDir}/librf24bcmjava.so"
+}
