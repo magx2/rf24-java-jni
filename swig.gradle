@@ -1,0 +1,13 @@
+task compileSwig(type: Exec) {
+	group 'SWIG'
+	commandLine "bin/swig-3.0.10/swig"
+	//noinspection GroovyAssignabilityCheck
+	args "-v", "-c++", '-java', '-outdir', "src/main/java/${swigPackage.replace(".", "/")}", "-package", "${swigPackage}", "swig-config/rf24bcmjava.i"
+	standardOutput = new ByteArrayOutputStream()
+}
+
+task cleanSwig(type: Delete) {
+	group 'SWIG'
+	delete fileTree(dir: "src/main/java/${swigPackage.replace(".", "/")}")
+	followSymlinks = false
+}
