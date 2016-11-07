@@ -1,5 +1,6 @@
 task createBuildDirForWrapper << {
-	group 'Build wrapper'
+	//noinspection GroovyAssignabilityCheck
+	group 'RF24'
 	final buildDir = file(wrapperBuildDir)
 	if(!buildDir.exists()) {
 		buildDir.mkdirs()
@@ -7,28 +8,33 @@ task createBuildDirForWrapper << {
 }
 
 task configureRf24NativeLib(type: Exec) {
+	group 'RF24'
 	workingDir './native/RF24'
 	commandLine './configure', "--header-dir=$headersDir"
 }
 
 task cleanConfigureRf24NativeLib(type: Exec) {
+	group 'RF24'
 	workingDir './native/RF24'
 	commandLine 'make', 'cleanconfig'
 }
 tasks.clean.dependsOn += tasks.cleanConfigureRf24NativeLib
 
 task makeRf24NativeLib(type: Exec, dependsOn: 'configureRf24NativeLib') {
+	group 'RF24'
 	workingDir './native/RF24'
 	commandLine 'sudo', 'make', 'install'
 }
 
 task cleanRf24NativeLib(type: Exec) {
+	group 'RF24'
 	workingDir './native/RF24'
 	commandLine 'make', 'clean'
 }
 tasks.clean.dependsOn += tasks.cleanRf24NativeLib
 
 task compileWrapper(type: Exec, dependsOn: ['createBuildDirForWrapper', 'makeRf24NativeLib']) {
+	group 'RF24'
 	group 'Build wrapper'
 	commandLine "g++"
 	//noinspection GroovyAssignabilityCheck
@@ -43,6 +49,7 @@ task compileWrapper(type: Exec, dependsOn: ['createBuildDirForWrapper', 'makeRf2
 }
 
 task compileRf24(type: Exec, dependsOn: 'compileWrapper') {
+	group 'RF24'
 	group 'Build wrapper'
 	commandLine "gcc"
 	//noinspection GroovyAssignabilityCheck
