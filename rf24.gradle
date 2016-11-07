@@ -60,3 +60,9 @@ task compileRf24(type: Exec, dependsOn: 'compileWrapper') {
 			"native/RF24/bcm2835.o",
 			"-o", "${wrapperBuildDir}/librf24bcmjava.so"
 }
+
+task rpiRf24Installer(type: Exec, dependsOn: 'createBuildDirForWrapper') {
+	group 'RF24'
+	workingDir './native'
+	commandLine './install', wrapperBuildDir
+}
