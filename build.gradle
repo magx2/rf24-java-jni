@@ -80,9 +80,9 @@ tasks.clean.dependsOn += tasks.cleanConfigureRf24NativeLib
 
 task makeRf24NativeLib(type: Exec, dependsOn: 'configureRf24NativeLib') {
 	workingDir './native/RF24'
-	commandLine 'sudo'
+	commandLine 'sudo', 'make', 'install'
 	//noinspection GroovyAssignabilityCheck
-	args 'make install'
+//	args 'make install'
 }
 
 task cleanRf24NativeLib(type: Exec) {
