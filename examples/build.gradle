@@ -25,6 +25,7 @@ dependencies {
 }
 
 task simpleExampleJar(type: OneJar) {
+	group 'Build examples JARs'
 	mainClass = 'pl.grzeslowski.smarthome.rf24.examples.SimpleExample'
 	archiveName = "$project.name-simple-example.jar"
 	binLib = files(rootProject.wrapperBuildDir + "/librf24bcmjava.so")
@@ -32,6 +33,7 @@ task simpleExampleJar(type: OneJar) {
 tasks.simpleExampleJar.dependsOn rootProject.tasks.linkWrapper
 
 task runSimpleExample(type: Exec, dependsOn: 'simpleExampleJar') {
+	group 'Run Examples'
 	workingDir "$project.buildDir/libs"
 	commandLine "java"
 	//noinspection GroovyAssignabilityCheck

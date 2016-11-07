@@ -42,6 +42,7 @@ ext {
 }
 
 task compileSwig(type: Exec) {
+	group 'SWIG'
 	commandLine "bin/swig-3.0.10/swig"
 	//noinspection GroovyAssignabilityCheck
 	args "-c++", '-java', '-outdir', "src/main/java/${swigPackage.replace(".", "/")}", "-package", "${swigPackage}", "swig-config/rf24bcmjava.i"
@@ -49,11 +50,13 @@ task compileSwig(type: Exec) {
 }
 
 task cleanSwig(type: Delete) {
+	group 'SWIG'
 	delete fileTree(dir: "src/main/java/${swigPackage.replace(".", "/")}")
 	followSymlinks = false
 }
 
 task createBuildDirForWrapper << {
+	group 'Build wrapper'
 	final buildDir = file(wrapperBuildDir)
 	if(!buildDir.exists()) {
 		buildDir.mkdirs()
@@ -61,17 +64,20 @@ task createBuildDirForWrapper << {
 }
 
 task copyIncludesForWrapper(type: Copy) {
+	group 'Build wrapper'
 	from utilityFolder
 	into pathToUtility
 }
 
 task cleanAfterCompileWrapper(type: Delete) {
+	group 'Build wrapper'
 	delete fileTree(dir: pathToUtility).include('*')
 	delete file('rf24bcmjava_wrap.o')
 }
 tasks.clean.dependsOn += tasks.cleanAfterCompileWrapper
 
 task compileWrapper(type: Exec, dependsOn: ['copyIncludesForWrapper', 'createBuildDirForWrapper']) {
+	group 'Build wrapper'
 	commandLine "g++"
 	//noinspection GroovyAssignabilityCheck
 	args "-fPIC", "-c", "swig-config/rf24bcmjava_wrap.cxx", "-I$javaJni", "-I$javaJniPlatformSpecyfic",
@@ -79,12 +85,14 @@ task compileWrapper(type: Exec, dependsOn: ['copyIncludesForWrapper', 'createBui
 }
 
 task compileRf24(type: Exec, dependsOn: 'compileWrapper') {
+	group 'Build wrapper'
 	commandLine "gcc"
 	//noinspection GroovyAssignabilityCheck
 	args "-fPIC", "-c", "native/RF24/RF24.cpp", "-o", "$wrapperBuildDir/RF24.o"
 }
 
 task linkWrapper(type: Exec, dependsOn: ['compileWrapper', 'compileRf24', 'createBuildDirForWrapper']) {
+	group 'Build wrapper'
 	commandLine "ld"
 	//noinspection GroovyAssignabilityCheck
 	args "-G", "$wrapperBuildDir/rf24bcmjava_wrap.o", "$wrapperBuildDir/RF24.o",
