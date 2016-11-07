@@ -65,7 +65,7 @@ task createBuildDirForWrapper << {
 
 task configureRf24NativeLib(type: Exec) {
 	workingDir './native/RF24'
-	commandLine 'configure'
+	commandLine './configure'
 	//noinspection GroovyAssignabilityCheck
 	args "--header-dir=$headersDir"
 }
