@@ -30,7 +30,7 @@ dependencies {
 }
 
 ext {
-	javaJni = ext.has('javaJni') ? javaJni : '/usr/lib/jvm/java-8-openjdk-amd64/include'
+	javaJni = ext.has('javaJni') ? javaJni : '/usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/include'
 	javaJniPlatformSpecyfic = ext.has('javaJniPlatformSpecyfic') ? javaJniPlatformSpecyfic : "$javaJni/linux"
 
 	pathToUtility = 'native/RF24/utility'
