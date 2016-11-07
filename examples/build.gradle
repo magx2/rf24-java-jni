@@ -37,7 +37,7 @@ task runSimpleExample(type: Exec, dependsOn: 'simpleExampleJar') {
 	workingDir "$project.buildDir/libs"
 	commandLine "java"
 	//noinspection GroovyAssignabilityCheck
-	args "-jar", "-Djava.library.path=$rootProject.wrapperBuildDir", "-c", "unlimited", tasks.simpleExampleJar.archiveName
+	args "-jar", "-Djava.library.path=$rootProject.wrapperBuildDir", tasks.simpleExampleJar.archiveName
 }
 
 tasks.runSimpleExample.doFirst {
