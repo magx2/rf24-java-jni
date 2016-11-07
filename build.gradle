@@ -116,8 +116,7 @@ task compileRf24(type: Exec, dependsOn: 'compileWrapper') {
 allprojects {
 	tasks.withType(Exec) {
 		doFirst {
-			println "Cmd to be executed:"
-			println " > " + commandLine.join(' ')
+			println "Exec> " + commandLine.join(' ')
 		}
 	}
 }
