@@ -33,7 +33,6 @@ task cleanRf24NativeLib(type: Exec) {
 
 task compileWrapper(type: Exec, dependsOn: ['createBuildDirForWrapper', 'makeRf24NativeLib']) {
 	group 'RF24'
-	group 'Build wrapper'
 	commandLine "g++"
 	//noinspection GroovyAssignabilityCheck
 	args "-fPIC", "-c",
@@ -48,7 +47,6 @@ task compileWrapper(type: Exec, dependsOn: ['createBuildDirForWrapper', 'makeRf2
 
 task compileRf24(type: Exec, dependsOn: 'compileWrapper') {
 	group 'RF24'
-	group 'Build wrapper'
 	commandLine "gcc"
 	//noinspection GroovyAssignabilityCheck
 	args "-shared", "-lstdc++",
