@@ -2,7 +2,12 @@
 
 # Taken from http://tmrh20.github.io/RF24Installer/RPi/install.sh
 
-INSTALL_PATH="."
+if [[ -z "$1" ]]; then
+	echo "Please pass path where to work in first param"
+	exit 101
+fi
+
+INSTALL_PATH="$1"
 INSTALL_DIR="/rf24libs"
 
 ROOT_PATH=${INSTALL_PATH}
