@@ -64,14 +64,14 @@ task createBuildDirForWrapper << {
 }
 
 task configureRf24NativeLib(type: Exec) {
-	workingDiir './native/RF24'
+	workingDir './native/RF24'
 	commandLine 'configure'
 	//noinspection GroovyAssignabilityCheck
 	args "--header-dir=$headersDir"
 }
 
 task cleanConfigureRf24NativeLib(type: Exec) {
-	workingDiir './native/RF24'
+	workingDir './native/RF24'
 	commandLine 'make'
 	//noinspection GroovyAssignabilityCheck
 	args 'cleanconfig'
@@ -79,14 +79,14 @@ task cleanConfigureRf24NativeLib(type: Exec) {
 tasks.clean.dependsOn += tasks.cleanConfigureRf24NativeLib
 
 task makeRf24NativeLib(type: Exec, dependsOn: 'configureRf24NativeLib') {
-	workingDiir './native/RF24'
+	workingDir './native/RF24'
 	commandLine 'make'
 	//noinspection GroovyAssignabilityCheck
 	args 'install'
 }
 
 task cleanRf24NativeLib(type: Exec) {
-	workingDiir './native/RF24'
+	workingDir './native/RF24'
 	commandLine 'make'
 	//noinspection GroovyAssignabilityCheck
 	args 'clean'
