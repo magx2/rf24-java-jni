@@ -86,8 +86,8 @@ task compileWrapper(type: Exec, dependsOn: ['copyIncludesForWrapper', 'createBui
 			"-I$javaJniPlatformSpecyfic",
 			"-I./native/RF24",
 			"-I./native/RF24/utility",
-			"-I./native/RF24/RF24.h",
-			"-o", "$wrapperBuildDir/rf24bcmjava_wrap.o"
+			"-o", "$wrapperBuildDir/rf24bcmjava_wrap.o",
+			"-include", "./native/RF24/RF24.h"
 }
 
 task compileRf24(type: Exec, dependsOn: 'compileWrapper') {
