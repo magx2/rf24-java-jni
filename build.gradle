@@ -97,7 +97,7 @@ task compileRf24(type: Exec, dependsOn: 'compileWrapper') {
 	args "-fPIC", "-c",
 			"$wrapperBuildDir/rf24bcmjava_wrap.o",
 			"native/RF24/librf24.so.1.1.7",
-			"swig-config/rf24bcmjava_wrap.cxx",
+//			"swig-config/rf24bcmjava_wrap.cxx",
 			"-o", "$wrapperBuildDir/RF24.o"
 }
 
