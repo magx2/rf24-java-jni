@@ -34,7 +34,7 @@ ext {
 	javaJniPlatformSpecyfic = ext.has('javaJniPlatformSpecyfic') ? javaJniPlatformSpecyfic : "$javaJni/linux"
 
 	pathToUtility = 'native/RF24/utility'
-	utilityFolder = pathToUtility + (ext.has('utilityFolder') ? utilityFolder : "/RPi")
+	headersDir = ext.has('headersDir') ? headersDir : "RPi"
 
 	wrapperBuildDir = ext.has('buildDir') ? wrapperBuildDir : "$project.buildDir/wrapper"
 
@@ -76,7 +76,37 @@ task cleanAfterCompileWrapper(type: Delete) {
 }
 tasks.clean.dependsOn += tasks.cleanAfterCompileWrapper
 
-task compileWrapper(type: Exec, dependsOn: ['copyIncludesForWrapper', 'createBuildDirForWrapper']) {
+task configureRf24NativeLib(type: Exec) {
+	workingDiir './native/RF24'
+	commandLine 'configure'
+	//noinspection GroovyAssignabilityCheck
+	args "--header-dir=$headersDir"
+}
+
+task cleanConfigureRf24NativeLib(type: Exec) {
+	workingDiir './native/RF24'
+	commandLine 'make'
+	//noinspection GroovyAssignabilityCheck
+	args 'cleanconfig'
+}
+tasks.clean.dependsOn += tasks.cleanConfigureRf24NativeLib
+
+task makeRf24NativeLib(type: Exec, dependsOn: 'configureRf24NativeLib') {
+	workingDiir './native/RF24'
+	commandLine 'make'
+	//noinspection GroovyAssignabilityCheck
+	args 'install'
+}
+
+task cleanRf24NativeLib(type: Exec) {
+	workingDiir './native/RF24'
+	commandLine 'make'
+	//noinspection GroovyAssignabilityCheck
+	args 'clean'
+}
+tasks.clean.dependsOn += tasks.cleanRf24NativeLib
+
+task compileWrapper(type: Exec, dependsOn: ['copyIncludesForWrapper', 'createBuildDirForWrapper', 'makeRf24NativeLib']) {
 	group 'Build wrapper'
 	commandLine "g++"
 	//noinspection GroovyAssignabilityCheck
