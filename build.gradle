@@ -63,19 +63,6 @@ task createBuildDirForWrapper << {
 	}
 }
 
-task copyIncludesForWrapper(type: Copy) {
-	group 'Build wrapper'
-	from utilityFolder
-	into pathToUtility
-}
-
-task cleanAfterCompileWrapper(type: Delete) {
-	group 'Build wrapper'
-	delete fileTree(dir: pathToUtility).include('*')
-	delete file('rf24bcmjava_wrap.o')
-}
-tasks.clean.dependsOn += tasks.cleanAfterCompileWrapper
-
 task configureRf24NativeLib(type: Exec) {
 	workingDiir './native/RF24'
 	commandLine 'configure'
@@ -106,7 +93,7 @@ task cleanRf24NativeLib(type: Exec) {
 }
 tasks.clean.dependsOn += tasks.cleanRf24NativeLib
 
-task compileWrapper(type: Exec, dependsOn: ['copyIncludesForWrapper', 'createBuildDirForWrapper', 'makeRf24NativeLib']) {
+task compileWrapper(type: Exec, dependsOn: ['createBuildDirForWrapper', 'makeRf24NativeLib']) {
 	group 'Build wrapper'
 	commandLine "g++"
 	//noinspection GroovyAssignabilityCheck
