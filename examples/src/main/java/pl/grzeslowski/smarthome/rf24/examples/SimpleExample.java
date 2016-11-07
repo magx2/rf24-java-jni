@@ -3,6 +3,8 @@ package pl.grzeslowski.smarthome.rf24.examples;
 import org.apache.commons.cli.*;
 import pl.grzeslowski.smarthome.rf24.generated.RF24;
 
+import java.util.concurrent.TimeUnit;
+
 public class SimpleExample {
     static {
         System.loadLibrary("rf24bcmjava");
@@ -25,6 +27,7 @@ public class SimpleExample {
         //noinspection InfiniteLoopStatement
         for(int i = 1;;) {
             System.out.println("For " + i++);
+            TimeUnit.SECONDS.sleep(5);
         }
     }
 
