@@ -51,3 +51,7 @@ allprojects {
 		}
 	}
 }
+
+tasks.clean.dependsOn {
+	tasks.findAll { task -> task.name.startsWith('clean') }
+}

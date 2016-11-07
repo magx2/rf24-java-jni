@@ -6,7 +6,7 @@ task compileSwig(type: Exec) {
 	standardOutput = new ByteArrayOutputStream()
 }
 
-task cleanSwig(type: Delete) {
+task removeSwigGeneratedClasses(type: Delete) {
 	group 'SWIG'
 	delete fileTree(dir: "src/main/java/${swigPackage.replace(".", "/")}")
 	followSymlinks = false

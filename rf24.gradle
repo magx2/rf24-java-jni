@@ -18,7 +18,6 @@ task cleanConfigureRf24NativeLib(type: Exec) {
 	workingDir './native/RF24'
 	commandLine 'make', 'cleanconfig'
 }
-tasks.clean.dependsOn += tasks.cleanConfigureRf24NativeLib
 
 task makeRf24NativeLib(type: Exec, dependsOn: 'configureRf24NativeLib') {
 	group 'RF24'
@@ -31,7 +30,6 @@ task cleanRf24NativeLib(type: Exec) {
 	workingDir './native/RF24'
 	commandLine 'make', 'clean'
 }
-tasks.clean.dependsOn += tasks.cleanRf24NativeLib
 
 task compileWrapper(type: Exec, dependsOn: ['createBuildDirForWrapper', 'makeRf24NativeLib']) {
 	group 'RF24'
