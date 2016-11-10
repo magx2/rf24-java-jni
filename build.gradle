@@ -87,7 +87,7 @@ bintray {
 			vcsTag = 'v' + project.version.replaceAll("-SNAPSHOT", '')
 			gpg {
 				sign = true
-				passphrase = project.rf24Passphrase
+				passphrase = project.hasProperty('rf24Passphrase') ? project.property('rf24Passphrase') : System.getenv('RF24_PASSPHRASE')
 			}
 		}
 	}
