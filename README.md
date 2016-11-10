@@ -76,7 +76,7 @@ ls ./native/RF24
 Note: *In ./native/precompiled/ folder you can fins precomputed libraries - 
 there is no need to compile it by hand!*
 
-On you RPi just run:
+On you RPi just run (remeber you need to have ```sudo``` rights!):
 
 ```gradle
 ./gradlew clean compileRf24
