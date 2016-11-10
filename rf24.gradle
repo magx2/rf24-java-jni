@@ -38,7 +38,7 @@ task compileWrapper(type: Exec, dependsOn: ['createBuildDirForWrapper', 'makeRf2
 	args "-fPIC", "-c",
 			"swig-config/rf24bcmjava_wrap.cxx",
 			"-I$javaJni",
-			"-I$javaJniPlatformSpecyfic",
+			"-I$javaJniPlatformSpecific",
 			"-I./native/RF24",
 			"-I./native/RF24/utility",
 			"-o", "$wrapperBuildDir/rf24bcmjava_wrap.o",
