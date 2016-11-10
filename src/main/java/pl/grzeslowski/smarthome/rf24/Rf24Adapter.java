@@ -1,10 +1,7 @@
 package pl.grzeslowski.smarthome.rf24;
 
 
-import pl.grzeslowski.smarthome.rf24.exceptions.CloseRf24Exception;
-import pl.grzeslowski.smarthome.rf24.exceptions.InitRf24Exception;
-import pl.grzeslowski.smarthome.rf24.exceptions.ReadRf24Exception;
-import pl.grzeslowski.smarthome.rf24.exceptions.WriteRf24Exception;
+import pl.grzeslowski.smarthome.rf24.exceptions.*;
 import pl.grzeslowski.smarthome.rf24.generated.RF24;
 import pl.grzeslowski.smarthome.rf24.helpers.Payload;
 import pl.grzeslowski.smarthome.rf24.helpers.Pins;
@@ -28,7 +25,7 @@ public class Rf24Adapter implements BasicRf24 {
         try {
             System.loadLibrary(rf24Lib);
         } catch (UnsatisfiedLinkError e) {
-            throw new RuntimeException("Native code library (" + rf24Lib + ") failed to load.", e);
+            throw new NoNativeLibException("Native code library (" + rf24Lib + ") failed to load.", e);
         }
     }
 
