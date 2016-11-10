@@ -104,3 +104,7 @@ allprojects {
 tasks.clean.dependsOn {
 	tasks.findAll { task -> task.name.matches("clean.+") }
 }
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '3.1'
+}
