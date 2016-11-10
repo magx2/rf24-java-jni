@@ -33,6 +33,12 @@ This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 ```
 
+Install everything with:
+
+```bash
+sudo apt-get install git gcc g++
+```
+
 Also remember to update your system:
 
 ```bash
