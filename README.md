@@ -45,6 +45,13 @@ sudo apt-get dist-upgrade
 Open RPi config app ```sudo raspi-config```, select Advanced and enable 
 the SPI kernel module. ```sudo reboot```
 
+### Clone repository
+
+```bash
+git clone https://github.com/magx2/rf24-java-jni.git
+cd rf24-java-jni
+```
+
 ## RF24 native libs
 
 Native libraries is taken from this repository: https://github.com/TMRh20/RF24/
