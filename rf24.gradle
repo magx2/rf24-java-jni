@@ -22,7 +22,7 @@ task cleanConfigureRf24NativeLib(type: Exec) {
 task makeRf24NativeLib(type: Exec, dependsOn: 'configureRf24NativeLib') {
 	group 'RF24'
 	workingDir './native/RF24'
-	commandLine 'sudo', 'make', 'install'
+	commandLine 'make', 'all'
 }
 
 task cleanRf24NativeLib(type: Exec) {
