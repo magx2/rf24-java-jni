@@ -36,7 +36,7 @@ ext {
 	javaJni = ext.has('javaJni') ? javaJni : '/usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/include'
 	javaJniPlatformSpecyfic = ext.has('javaJniPlatformSpecyfic') ? javaJniPlatformSpecyfic : "$javaJni/linux"
 	headersDir = ext.has('headersDir') ? headersDir : "RPi"
-	wrapperBuildDir = ext.has('buildDir') ? wrapperBuildDir : "$project.buildDir/wrapper"
+	wrapperBuildDir = ext.has('wrapperBuildDir') ? wrapperBuildDir : "$project.buildDir/wrapper"
 	swigPackage = "${project.group}.generated"
 }
 
