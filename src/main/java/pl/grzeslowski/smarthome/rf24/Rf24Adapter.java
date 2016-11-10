@@ -12,10 +12,17 @@ import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import static java.lang.String.format;
 
+/**
+ * <p>Adapter that delegates everything to {@link RF24} and do dome small login.</p>
+ * <p>
+ * <p>Watch out! All class methods are synchronized (on this)!</p>
+ */
 public class Rf24Adapter implements BasicRf24 {
     public static final int MAX_NUMBER_OF_READING_PIPES = 5;
     private static final long DELAY_AFTER_STARTING_LISTENING = TimeUnit.SECONDS.convert(1, TimeUnit.MILLISECONDS);
@@ -46,14 +53,42 @@ public class Rf24Adapter implements BasicRf24 {
     }
 
     /**
-     * Gets object of {@link RF24} for further extending this class.
+     * <p>Instead of allowing inheriting classes to directly uses RF24 object, this method
+     * allows to use it with proper synchronization and boundaries (do not use this if Rf34Adapter is not
+     * {@link Rf24Adapter#init()}.</p>
      *
-     * @return active class used for communication with WiFi device (through JNI)
+     * @param function      piece of code to execute with {@link RF24}
+     * @param <ReturnClass> class of what will be returned
+     * @return result of {@link Function#apply(Object)}
      */
-    protected RF24 getRF24() {
-        return rf24;
+    protected synchronized <ReturnClass> ReturnClass mapRf24(Function<RF24, ReturnClass> function) {
+        if (function == null) {
+            throw new NullPointerException("Function cannot be null!");
+        }
+        try {
+            return function.apply(rf24);
+        } catch (Exception e) {
+            throw new Rf24Exception("mapRf24 thrown an Exception!", e);
+        }
     }
 
+    /**
+     * <p>Instead of allowing inheriting classes to directly uses RF24 object, this method
+     * allows to use it with proper synchronization and boundaries (do not use this if Rf34Adapter is not
+     * {@link Rf24Adapter#init()}.</p>
+     *
+     * @param consumer piece of code to execute with {@link RF24}
+     */
+    protected synchronized void consumeRf24(Consumer<RF24> consumer) {
+        if (consumer == null) {
+            throw new NullPointerException("Consumer cannot be null!");
+        }
+        try {
+            consumer.accept(rf24);
+        } catch (Exception e) {
+            throw new Rf24Exception("consumeRf24 thrown an Exception!", e);
+        }
+    }
 
     @Override
     public synchronized void init() {
