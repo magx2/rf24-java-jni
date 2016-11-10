@@ -1,5 +1,10 @@
 task compileSwig(type: Exec) {
 	group 'SWIG'
+	description """\
+Creates wrapper for Java. This file (swig-config/rf24bcmjava_wrap.cxx) is needed by tasks that compiles RF24 JNI.
+Normally you don't need to run this task. File ./swig-config/rf24bcmjava_wrap.cxx is already commited and ready to be used.
+Note: you need to have swig (tested with 3.0.10) in your classpath.\
+"""
 	commandLine "bin/swig-3.0.10/swig"
 	//noinspection GroovyAssignabilityCheck
 	args "-v", "-c++", '-java', '-outdir', "src/main/java/${swigPackage.replace(".", "/")}", "-package", "${swigPackage}", "swig-config/rf24bcmjava.i"
