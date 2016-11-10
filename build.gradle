@@ -5,9 +5,15 @@ buildscript {
 	}
 }
 
-group 'pl.grzeslowski.smarthome.rf24'
-version '1.0-SNAPSHOT'
+plugins {
+	id "com.jfrog.bintray" version "1.7"
+}
 
+group 'pl.grzeslowski.smarthome.rf24'
+version '1.0.0-SNAPSHOT'
+
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
 apply plugin: 'java'
 apply plugin: 'idea'
 
@@ -42,6 +48,50 @@ ext {
 
 apply from: 'swig.gradle'
 apply from: 'rf24.gradle'
+
+publishing {
+	publications {
+		Rf24Publication(MavenPublication) {
+			from components.java
+			groupId 'pl.grzeslowski.smarthome'
+			artifactId 'rf24'
+			version project.version.replaceAll("-SNAPSHOT", '')
+		}
+	}
+}
+
+bintray {
+	user = project.bintrayUser
+	key = project.bintrayKey
+
+	publications = ['Rf24Publication']
+	dryRun = project.hasProperty('dryRun')
+	publish = true
+	pkg {
+		repo = 'bigboy'
+		name = project.group
+		desc = 'This is Java JNI wrapper on RF24 library.'
+		websiteUrl = 'https://github.com/magx2/rf24-java-jni'
+		issueTrackerUrl = 'https://github.com/magx2/rf24-java-jni/issues'
+		vcsUrl = 'https://github.com/magx2/rf24-java-jni.git'
+		licenses = ['MIT']
+		labels = ['RF24', 'Raspberry', 'PI', 'RPi', 'NRF24L01']
+		publicDownloadNumbers = true
+
+		githubRepo = 'https://github.com/magx2/rf24-java-jni' //Optional Github repository
+		githubReleaseNotesFile = 'README.md' //Optional Github readme file
+
+		//noinspection GroovyAssignabilityCheck
+		version {
+			name = project.version.replaceAll("-SNAPSHOT", '') //Bintray logical version name
+			vcsTag = 'v' + project.version.replaceAll("-SNAPSHOT", '')
+			gpg {
+				sign = true
+				passphrase = project.rf24Passphrase
+			}
+		}
+	}
+}
 
 allprojects {
 	tasks.withType(Exec) {
