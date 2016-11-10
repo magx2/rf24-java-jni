@@ -10,9 +10,13 @@ Note: you need to have swig (tested with 3.0.10) in your classpath.
        Configured options: +pcre
 \
 """
-	commandLine "swig"
-	//noinspection GroovyAssignabilityCheck
-	args "-v", "-c++", '-java', '-outdir', "src/main/java/${swigPackage.replace(".", "/")}", "-package", "${swigPackage}", "swig-config/rf24bcmjava.i"
+	commandLine "swig",
+			"-v",
+			"-c++",
+			'-java',
+			'-outdir',
+			"src/main/java/${swigPackage.replace(".", "/")}",
+			"-package", "${swigPackage}", "swig-config/rf24bcmjava.i"
 	standardOutput = new ByteArrayOutputStream()
 }
 
