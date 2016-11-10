@@ -26,15 +26,7 @@ import static java.lang.String.format;
 public class Rf24Adapter implements BasicRf24 {
     public static final int MAX_NUMBER_OF_READING_PIPES = 5;
     private static final long DELAY_AFTER_STARTING_LISTENING = TimeUnit.SECONDS.convert(1, TimeUnit.MILLISECONDS);
-
-    static {
-        final String rf24Lib = "rf24bcmjava";
-        try {
-            System.loadLibrary(rf24Lib);
-        } catch (UnsatisfiedLinkError e) {
-            throw new NoNativeLibException("Native code library (" + rf24Lib + ") failed to load.", e);
-        }
-    }
+    private static final String RF24_LIB_NAME = "rf24bcmjava";
 
     private final Pins pins;
     private final Retry retry;
@@ -42,6 +34,14 @@ public class Rf24Adapter implements BasicRf24 {
 
     private RF24 rf24;
     private List<Pipe> actualReadPipes;
+
+    public static void loadLibrary() {
+        try {
+            System.loadLibrary(RF24_LIB_NAME);
+        } catch (UnsatisfiedLinkError e) {
+            throw new NoNativeLibException("Native code library (" + RF24_LIB_NAME + ") failed to load.", e);
+        }
+    }
 
     public Rf24Adapter(Pins pins, Retry retry, Payload payload) {
         if (pins == null) throw new NullPointerException("Pins cannot be null!");
