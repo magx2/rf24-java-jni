@@ -11,8 +11,9 @@ Note: you need to have swig (tested with 3.0.10) in your classpath.\
 	standardOutput = new ByteArrayOutputStream()
 }
 
-task removeSwigGeneratedClasses(type: Delete) {
+task removeSwigGeneratedFiles(type: Delete) {
 	group 'SWIG'
 	delete fileTree(dir: "src/main/java/${swigPackage.replace(".", "/")}")
+	delete file('swig-config/rf24bcmjava_wrap.cxx')
 	followSymlinks = false
 }
