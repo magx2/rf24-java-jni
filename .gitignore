@@ -24,3 +24,6 @@ rf24bcmjava_wrap.o
 
 .idea/
 .gradle/
+
+build/
+examples/build
