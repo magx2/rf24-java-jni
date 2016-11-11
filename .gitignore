@@ -27,3 +27,5 @@ rf24bcmjava_wrap.o
 
 build/
 examples/build
+
+!gradle/wrapper/gradle-wrapper.jar
