@@ -97,7 +97,7 @@ public class Main {
         }
     }
 
-    public static viod main(String[] args) {
+    public static void main(String[] args) {
         // ... your staff ...
     }
 }
