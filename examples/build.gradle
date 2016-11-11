@@ -19,28 +19,36 @@ repositories {
     mavenCentral()
 }
 
+ext {
+	examples = ['Simple', 'Rf24PingPong']
+}
+
 dependencies {
     compile group: 'commons-cli', name: 'commons-cli', version: '1.3'
     compile rootProject
 }
 
-task simpleExampleJar(type: OneJar) {
-	group 'Build examples JARs'
-	mainClass = 'pl.grzeslowski.smarthome.rf24.examples.SimpleExample'
-	archiveName = "$project.name-simple-example.jar"
-	binLib = files(rootProject.wrapperBuildDir + "/librf24bcmjava.so")
-}
-tasks.simpleExampleJar.dependsOn rootProject.tasks.compileRf24
 
-task runSimpleExample(type: Exec, dependsOn: 'simpleExampleJar') {
-	group 'Run Examples'
-	workingDir "$project.buildDir/libs"
-	commandLine "sudo", "java", "-jar", "-Djava.library.path=$rootProject.wrapperBuildDir", tasks.simpleExampleJar.archiveName
-}
-
-tasks.runSimpleExample.doFirst {
-	copy {
-		from rootProject.wrapperBuildDir
-		into "$project.buildDir/libs"
+// Create Jar task
+project.examples.forEach { String taskName ->
+	final fullTaskName = "jar${taskName}Example"
+	tasks.create(name: fullTaskName, type: OneJar) {
+		group 'Build examples JARs'
+		mainClass = "pl.grzeslowski.smarthome.rf24.examples.${taskName}Example"
+		archiveName = "$project.name-${taskName.toLowerCase()}-example.jar"
 	}
+	tasks[fullTaskName].dependsOn rootProject.tasks.compileRf24
+}
+
+
+// Create run task
+project.examples.forEach { String taskName ->
+	final fullTaskName = "run${taskName}Example"
+	final jarTask = "jar${taskName}Example"
+	tasks.create(name: fullTaskName, type: Exec) {
+		group 'Run Examples'
+		workingDir "$project.buildDir/libs"
+		commandLine "sudo", "java", "-jar", "-Djava.library.path=$rootProject.wrapperBuildDir", tasks[jarTask].archiveName
+	}
+	tasks[fullTaskName].dependsOn += tasks[jarTask]
 }
