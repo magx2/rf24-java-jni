@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/magx2/rf24-java-jni.svg?branch=master)](https://travis-ci.org/magx2/rf24-java-jni)
+
 # Installing into your java project
 
 ## Get 
