@@ -29,26 +29,22 @@ dependencies {
 }
 
 
-// Create Jar task
+// Create Jar and run task
 project.examples.forEach { String taskName ->
-	final fullTaskName = "jar${taskName}Example"
-	tasks.create(name: fullTaskName, type: OneJar) {
+	final jarTaskName = "jar${taskName}Example"
+	tasks.create(name: jarTaskName, type: OneJar) {
 		group 'Build examples JARs'
 		mainClass = "pl.grzeslowski.smarthome.rf24.examples.${taskName}Example"
 		archiveName = "$project.name-${taskName.toLowerCase()}-example.jar"
 	}
-	tasks[fullTaskName].dependsOn rootProject.tasks.compileRf24
-}
+	tasks[jarTaskName].dependsOn rootProject.tasks.compileRf24
 
-
-// Create run task
-project.examples.forEach { String taskName ->
-	final fullTaskName = "run${taskName}Example"
-	final jarTask = "jar${taskName}Example"
-	tasks.create(name: fullTaskName, type: Exec) {
+	final runTaskName = "run${taskName}Example"
+	tasks.create(name: runTaskName, type: Exec) {
 		group 'Run Examples'
 		workingDir "$project.buildDir/libs"
-		commandLine "sudo", "java", "-jar", "-Djava.library.path=$rootProject.wrapperBuildDir", tasks[jarTask].archiveName
+		commandLine "sudo", "java", "-jar", "-Djava.library.path=$rootProject.wrapperBuildDir", tasks[jarTaskName].archiveName
 	}
-	tasks[fullTaskName].dependsOn += tasks[jarTask]
+	tasks[runTaskName].dependsOn += tasks[jarTaskName]
 }
+
