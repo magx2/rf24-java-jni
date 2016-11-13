@@ -33,6 +33,7 @@ dependencies {
 project.examples.forEach { String taskName ->
 	final jarTaskName = "jar${taskName}Example"
 	tasks.create(name: jarTaskName, type: OneJar) {
+		//noinspection GroovyAssignabilityCheck
 		group 'Build examples JARs'
 		mainClass = "pl.grzeslowski.smarthome.rf24.examples.${taskName}Example"
 		archiveName = "$project.name-${taskName.toLowerCase()}-example.jar"
