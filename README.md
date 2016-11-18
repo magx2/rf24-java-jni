@@ -55,7 +55,7 @@ rf24.read(READ_PIPE, readBuffer);
 rf24.write(WRITE_PIPE, sendBuffer.array());
 ```
 
-Note: *Remember to ```close``` ```BasicRf24``` instance after you are done.
+Note: *Remember to ```close``` ```BasicRf24``` instance after you are done.*
 
 For more information look into examples.
 
