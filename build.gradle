@@ -48,8 +48,16 @@ publishing {
 			groupId 'pl.grzeslowski.smarthome'
 			artifactId 'rf24'
 			version project.version.replaceAll("-SNAPSHOT", '')
+
+			artifact sourceJar {
+				classifier "sources"
+			}
 		}
 	}
+}
+
+task sourceJar(type: Jar) {
+	from sourceSets.main.allJava
 }
 
 bintray {
