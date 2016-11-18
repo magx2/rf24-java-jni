@@ -71,7 +71,7 @@ public class Pipe {
 
     @Override
     public String toString() {
-        return format("%s[bin: %s, hex: %#016X, dec: %019d, ]",
+        return format("%s[bin: %s, hex: %#016X, dec: %019d]",
                 this.getClass().getSimpleName(),
                 Long.toBinaryString(pipe),
                 pipe,
