@@ -91,7 +91,8 @@ public class Rf24PingPongServerExample {
     }
 
     private boolean send() {
-        long time = new Date().getTime();
+        long time = 1234567890L;
+//        long time = new Date().getTime();
         logger.info("Now sending {}...", time);
         sendBuffer.clear();
         sendBuffer.putLong(time);
