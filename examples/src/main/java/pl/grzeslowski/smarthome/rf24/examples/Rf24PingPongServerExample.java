@@ -54,6 +54,9 @@ public class Rf24PingPongServerExample {
     }
 
     public void init() {
+        logger.info("Init RF24");
+        logger.info("Write pipe: {}", WRITE_PIPE);
+        logger.info("Read pipe: {}", READ_PIPE);
         rf24.init();
     }
 
