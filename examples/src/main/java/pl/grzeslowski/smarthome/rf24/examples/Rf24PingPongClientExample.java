@@ -17,6 +17,10 @@ import java.nio.ByteOrder;
 import java.util.concurrent.TimeUnit;
 
 public class Rf24PingPongClientExample {
+    static {
+        Rf24Adapter.loadLibrary();
+    }
+
     private static final Logger logger = LoggerFactory.getLogger(Rf24PingPongClientExample.class);
     private static final Pipe WRITE_PIPE = new Pipe("2Node");
     private static final Pipe READ_PIPE = new Pipe("1Node");
