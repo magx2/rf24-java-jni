@@ -78,17 +78,17 @@ public class Rf24PingPongServerExample {
         for (int counter = 1; true; counter++) {
 
             // send
-            send(counter);
+            final boolean send = send(counter);
 
             // read
-            read();
+            if (send) read();
 
             // Sleep
             Thread.sleep(TIME_TO_SLEEP);
         }
     }
 
-    private void send(int counter) {
+    private boolean send(int counter) {
         logger.info("Now sending {}...", counter);
         sendBuffer.clear();
         sendBuffer.putInt(counter);
@@ -97,8 +97,10 @@ public class Rf24PingPongServerExample {
             if (!wrote) {
                 logger.error("Failed sending {}!", counter);
             }
+            return wrote;
         } catch (WriteRf24Exception ex) {
             logger.error("Failed sending " + counter + "!", ex);
+            return false;
         }
     }
 
