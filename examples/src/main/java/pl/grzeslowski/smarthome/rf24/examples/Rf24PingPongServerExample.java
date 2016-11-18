@@ -77,7 +77,8 @@ public class Rf24PingPongServerExample {
     }
 
     public void run() throws InterruptedException {
-        for (;;) {
+        for (long counter = 1; true; counter++) {
+            logger.info("Iteration #{}", counter);
 
             // send
             final boolean send = send();
