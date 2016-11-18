@@ -80,7 +80,7 @@ public class Rf24PingPongServerExample {
             logger.info("Iteration #{}", counter);
 
             // send
-            final boolean send = send();
+            send();
 
             // read
             read();
@@ -90,7 +90,7 @@ public class Rf24PingPongServerExample {
         }
     }
 
-    private boolean send() {
+    private void send() {
         long time = new Date().getTime();
         logger.info("Now sending {}...", time);
         sendBuffer.clear();
@@ -100,10 +100,8 @@ public class Rf24PingPongServerExample {
             if (!wrote) {
                 logger.error("Failed sending {}!", time);
             }
-            return wrote;
         } catch (WriteRf24Exception ex) {
             logger.error("Failed sending " + time + "!", ex);
-            return false;
         }
     }
 
