@@ -69,7 +69,7 @@ public class Rf24PingPongServerExample {
 
         rf24.init();
 
-        if(rf24 instanceof Rf24Adapter) {
+        if (rf24 instanceof Rf24Adapter) {
             ((Rf24Adapter) rf24).printDetails();
         }
     }
@@ -96,10 +96,10 @@ public class Rf24PingPongServerExample {
         try {
             final boolean wrote = rf24.write(WRITE_PIPE, sendBuffer.array());
             if (!wrote) {
-                logger.error("Failed!");
+                logger.error("Failed sending {}!", counter);
             }
         } catch (WriteRf24Exception ex) {
-            logger.error("Failed!", ex);
+            logger.error("Failed sending " + counter + "!", ex);
         }
     }
 
@@ -110,12 +110,13 @@ public class Rf24PingPongServerExample {
         try {
             while (!wasRead && System.currentTimeMillis() <= startedAt + WAITING_FOR_RESPONSE_TIME) {
                 wasRead = rf24.read(READ_PIPE, readBuffer);
+                logger.trace("wasRead = {}", wasRead);
             }
         } catch (ReadRf24Exception ex) {
             logger.error("Error while reading!", ex);
         }
 
-        if(wasRead) {
+        if (wasRead) {
             int response = readBuffer.getInt();
             logger.info("Got {}", response);
         } else {
