@@ -24,7 +24,7 @@ public class Rf24PingPongServerExample {
     private static final Logger logger = LoggerFactory.getLogger(Rf24PingPongServerExample.class);
     private static final Pipe WRITE_PIPE = new Pipe("1Node");
     private static final Pipe READ_PIPE = new Pipe("2Node");
-    private static final long WAITING_FOR_RESPONSE_TIME = 250;
+    private static final long WAITING_FOR_RESPONSE_TIME = TimeUnit.SECONDS.toMillis(1);
     private static final long TIME_TO_SLEEP = TimeUnit.SECONDS.toMillis(1);
 
     private final ArgsReader argsReader = new ArgsReader();
