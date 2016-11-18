@@ -76,7 +76,6 @@ public class Rf24PingPongServerExample {
 
     public void run() throws InterruptedException {
         for (int counter = 1; true; counter++) {
-            counter++;
 
             // send
             send(counter);
