@@ -15,6 +15,7 @@ import pl.grzeslowski.smarthome.rf24.helpers.Retry;
 import java.math.BigInteger;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class Rf24PingPongServerExample {
@@ -120,7 +121,8 @@ public class Rf24PingPongServerExample {
         if (wasRead) {
             long response = readBuffer.getLong();
             long roundTripTime = System.currentTimeMillis() - response;
-            logger.info("Got {}, Round trip time {} [ms].", response, roundTripTime);
+            final Duration duration = Duration.ofMillis(roundTripTime);
+            logger.info("Got {}, Round trip time {} [ms].", response, duration.toString());
         } else {
             logger.error("Timeout!");
         }
