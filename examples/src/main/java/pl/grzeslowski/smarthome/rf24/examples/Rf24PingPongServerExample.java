@@ -23,7 +23,7 @@ public class Rf24PingPongServerExample {
     }
 
     private static final Logger logger = LoggerFactory.getLogger(Rf24PingPongServerExample.class);
-    private static final Pipe WRITE_PIPE = new Pipe(new BigInteger("1100101 01100100 01101111 01001110 00110001", 2).longValue());
+    private static final Pipe WRITE_PIPE = new Pipe(new BigInteger("110010101100100011011110100111000110001", 2).longValue());
     private static final Pipe READ_PIPE = new Pipe(new BigInteger("110010101100100011011110100111000110010", 2).longValue());
     private static final long WAITING_FOR_RESPONSE_TIME = TimeUnit.SECONDS.toMillis(1);
     private static final long TIME_TO_SLEEP = TimeUnit.SECONDS.toMillis(1);
