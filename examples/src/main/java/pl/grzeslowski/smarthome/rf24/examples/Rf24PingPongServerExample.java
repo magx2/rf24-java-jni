@@ -84,7 +84,6 @@ public class Rf24PingPongServerExample {
             final boolean send = send();
 
             // read
-//            if (send) read();
             read();
 
             // Sleep
