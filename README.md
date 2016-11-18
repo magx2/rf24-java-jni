@@ -19,7 +19,7 @@ To run it type (in main dir):
 
     ./gradlew :examples:runRf24PingPongServerExample
     
-_Note: you can run Rf24PingPongClientExample.ino on Arduino to have second device that will answer calls._
+Note: *You can run Rf24PingPongClientExample.ino on Arduino to have second device that will answer calls.*
 
 ### Client
 
@@ -27,7 +27,7 @@ To run it type (in main dir):
 
     ./gradlew :examples:runRf24PingPongClientExample
 
-_Note: you can run Rf24PingPongServerExample.ino on Arduino to have second device that will start pinging this example._
+Note: *You can run Rf24PingPongServerExample.ino on Arduino to have second device that will start pinging this example.*
 
 # RF24 
 
