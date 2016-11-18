@@ -58,6 +58,9 @@ public class Rf24PingPongServerExample {
         logger.info("Write pipe: {}", WRITE_PIPE);
         logger.info("Read pipe: {}", READ_PIPE);
         rf24.init();
+        if(rf24 instanceof Rf24Adapter) {
+            ((Rf24Adapter) rf24).printDetails();
+        }
     }
 
     public void run() throws InterruptedException {

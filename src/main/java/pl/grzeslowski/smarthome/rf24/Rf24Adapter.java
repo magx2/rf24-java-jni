@@ -203,6 +203,15 @@ public class Rf24Adapter implements BasicRf24 {
         }
     }
 
+    /**
+     * Printing details from RF24 card.
+     *
+     * Important: Use it only in debug purposes!
+     */
+    public void printDetails() {
+        rf24.printDetails();
+    }
+
     @Override
     public String toString() {
         final String readPipes = String.join(",",
