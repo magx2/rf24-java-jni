@@ -91,8 +91,7 @@ public class Rf24PingPongServerExample {
     }
 
     private boolean send() {
-        long time = 1234567890L;
-//        long time = new Date().getTime();
+        long time = new Date().getTime();
         logger.info("Now sending {}...", time);
         sendBuffer.clear();
         sendBuffer.putLong(time);
@@ -110,7 +109,7 @@ public class Rf24PingPongServerExample {
 
     private void read() {
         readBuffer.clear();
-        final long startedAt = System.currentTimeMillis();
+        final long startedAt = new Date().getTime();
         boolean wasRead = false;
         try {
             while (!wasRead && System.currentTimeMillis() <= startedAt + WAITING_FOR_RESPONSE_TIME) {
