@@ -20,7 +20,7 @@ repositories {
 }
 
 ext {
-	examples = ['Simple', 'Rf24PingPongServerExample', 'Rf24PingPongClientExample']
+	examples = ['Rf24PingPongServerExample', 'Rf24PingPongClientExample']
 }
 
 dependencies {
