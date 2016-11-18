@@ -1,5 +1,6 @@
 package pl.grzeslowski.smarthome.rf24.examples;
 
+import org.apache.commons.lang3.time.DurationFormatUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pl.grzeslowski.smarthome.rf24.BasicRf24;
@@ -12,10 +13,8 @@ import pl.grzeslowski.smarthome.rf24.helpers.Pins;
 import pl.grzeslowski.smarthome.rf24.helpers.Pipe;
 import pl.grzeslowski.smarthome.rf24.helpers.Retry;
 
-import java.math.BigInteger;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import java.time.Duration;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -123,8 +122,7 @@ public class Rf24PingPongServerExample {
         if (wasRead) {
             long response = readBuffer.getLong();
             long roundTripTime = System.currentTimeMillis() - response;
-            final Duration duration = Duration.ofMillis(roundTripTime);
-            logger.info("Got {}, Round trip time {} [s].", response, duration.toString());
+            logger.info("Got {}, Round trip time {} [s].", response, DurationFormatUtils.formatDuration(roundTripTime, "mm:ss", true));
         } else {
             logger.error("Timeout!");
         }

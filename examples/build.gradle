@@ -29,6 +29,7 @@ dependencies {
     compile rootProject
 	compile group: 'org.slf4j', name: 'slf4j-api', version: slf4j
 	compile group: 'org.slf4j', name: 'slf4j-simple', version: slf4j
+	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.5'
 }
 
 
