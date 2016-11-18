@@ -3,7 +3,32 @@
 # Installing into your java project
 
 ## Get 
-**TODO**
+
+### Maven
+
+Add to ```pom.xml```:
+
+```xml
+<dependency>
+    <groupId>pl.grzeslowski.smarthome</groupId> 
+    <artifactId>rf24</artifactId> 
+    <version>1.0.0</version> 
+    <type>pom</type> 
+</dependency>
+```
+
+### Gradle
+
+Add to ```build.gradle```:
+
+```gradle
+compile 'pl.grzeslowski.smarthome:rf24:1.0.0'
+```
+
+### Jars
+
+You can download Jars from here: 
+https://bintray.com/big-boy/bigboy/pl.grzeslowski.smarthome.rf24/1.0.0#files/pl/grzeslowski/smarthome/rf24
 
 # Running tests
 
