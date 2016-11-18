@@ -16,6 +16,7 @@ import java.math.BigInteger;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.time.Duration;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class Rf24PingPongServerExample {
@@ -90,7 +91,7 @@ public class Rf24PingPongServerExample {
     }
 
     private boolean send() {
-        long time = System.currentTimeMillis();
+        long time = new Date().getTime();
         logger.info("Now sending {}...", time);
         sendBuffer.clear();
         sendBuffer.putLong(time);
