@@ -30,6 +30,35 @@ compile 'pl.grzeslowski.smarthome:rf24:1.0.0'
 You can download Jars from here: 
 https://bintray.com/big-boy/bigboy/pl.grzeslowski.smarthome.rf24/1.0.0#files/pl/grzeslowski/smarthome/rf24
 
+## Usage
+
+Create instance of interface ```BasicRf24```
+
+```java
+Pins pins = new Pins(ce, cs, clockSpeed);
+Retry retry = new Retry(retryDelay, retryNumber);
+Payload payload = new Payload((short) (Long.SIZE / Byte.SIZE));
+        
+BasicRf24 rf24 = new Rf24Adapter(pins, retry, payload);
+```
+
+Then ```init``` instance:
+
+```java
+rf24.init()
+```
+
+And voila! Now you can ```write``` and ```read``` from ```Pipe```s.
+
+```java
+rf24.read(READ_PIPE, readBuffer);
+rf24.write(WRITE_PIPE, sendBuffer.array());
+```
+
+Note: *Remember to ```close``` ```BasicRf24``` instance after you are done.
+
+For more information look into examples.
+
 # Running tests
 
 Warning: *Remember you need to have ```sudo``` right to run examples!*
