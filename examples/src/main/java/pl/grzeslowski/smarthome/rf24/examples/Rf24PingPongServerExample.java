@@ -123,7 +123,7 @@ public class Rf24PingPongServerExample {
             long response = readBuffer.getLong();
             long roundTripTime = System.currentTimeMillis() - response;
             final Duration duration = Duration.ofMillis(roundTripTime);
-            logger.info("Got {}, Round trip time {} [ms].", response, duration.toString());
+            logger.info("Got {}, Round trip time {} [s].", response, duration.toString());
         } else {
             logger.error("Timeout!");
         }
