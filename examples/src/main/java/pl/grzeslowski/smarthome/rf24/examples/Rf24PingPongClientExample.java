@@ -40,14 +40,14 @@ public class Rf24PingPongClientExample {
     public Rf24PingPongClientExample(String[] args) {
         Pins pins = argsReader.readPins(args);
         Retry retry = argsReader.readRetry(args);
-        Payload payload = new Payload((short) 8);
+        Payload payload = new Payload((short) (Long.SIZE / Byte.SIZE));
 
         rf24 = new Rf24Adapter(pins, retry, payload);
 
-        sendBuffer = ByteBuffer.allocate(Integer.SIZE / Byte.SIZE);
+        sendBuffer = ByteBuffer.allocate(Long.SIZE / Byte.SIZE);
         sendBuffer.order(ByteOrder.LITTLE_ENDIAN);
 
-        readBuffer = ByteBuffer.allocate(Integer.SIZE / Byte.SIZE);
+        readBuffer = ByteBuffer.allocate(Long.SIZE / Byte.SIZE);
         readBuffer.order(ByteOrder.LITTLE_ENDIAN);
     }
 
@@ -65,17 +65,17 @@ public class Rf24PingPongClientExample {
             }
 
             if (read) {
-                int payload = readBuffer.getInt();
+                long payload = readBuffer.getLong();
                 readBuffer.clear();
 
                 logger.info("Got payload {}", payload);
 
                 sendBuffer.clear();
-                sendBuffer.putInt(payload);
+                sendBuffer.putLong(payload);
                 try {
                     rf24.write(WRITE_PIPE, sendBuffer.array());
                 } catch (WriteRf24Exception ex) {
-                    logger.error("Write error!", ex);
+                    logger.error("Write error when sending " + payload + "!", ex);
                 }
 
                 Thread.sleep(TIME_TO_SLEEP);
