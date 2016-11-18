@@ -75,10 +75,10 @@ public class Rf24PingPongServerExample {
     }
 
     public void run() throws InterruptedException {
-        for (long counter = 1; true; counter++) {
+        for (;;) {
 
             // send
-            final boolean send = send(counter);
+            final boolean send = send();
 
             // read
             if (send) read();
@@ -88,18 +88,19 @@ public class Rf24PingPongServerExample {
         }
     }
 
-    private boolean send(long counter) {
-        logger.info("Now sending {}...", counter);
+    private boolean send() {
+        long time = System.currentTimeMillis();
+        logger.info("Now sending {}...", time);
         sendBuffer.clear();
-        sendBuffer.putLong(counter);
+        sendBuffer.putLong(time);
         try {
             final boolean wrote = rf24.write(WRITE_PIPE, sendBuffer.array());
             if (!wrote) {
-                logger.error("Failed sending {}!", counter);
+                logger.error("Failed sending {}!", time);
             }
             return wrote;
         } catch (WriteRf24Exception ex) {
-            logger.error("Failed sending " + counter + "!", ex);
+            logger.error("Failed sending " + time + "!", ex);
             return false;
         }
     }
@@ -118,7 +119,8 @@ public class Rf24PingPongServerExample {
 
         if (wasRead) {
             long response = readBuffer.getLong();
-            logger.info("Got {}", response);
+            long roundTripTime = System.currentTimeMillis() - response;
+            logger.info("Got {}, Round trip time {} [ms].", response, roundTripTime);
         } else {
             logger.error("Timeout!");
         }
