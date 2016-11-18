@@ -53,8 +53,6 @@ public interface BasicRf24 extends AutoCloseable {
      */
     boolean write(Pipe write, byte[] toWrite) throws WriteRf24Exception;
 
-    Payload getPayload();
-
     /**
      * Closes the device and releases resources. Class can be used only if init will be invoked.
      *

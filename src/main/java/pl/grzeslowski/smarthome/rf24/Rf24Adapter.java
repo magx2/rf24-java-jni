@@ -204,11 +204,6 @@ public class Rf24Adapter implements BasicRf24 {
     }
 
     @Override
-    public Payload getPayload() {
-        return payload;
-    }
-
-    @Override
     public String toString() {
         final String readPipes = String.join(",",
                 actualReadPipes.stream()
