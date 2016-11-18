@@ -5,18 +5,22 @@ import pl.grzeslowski.smarthome.rf24.helpers.ClockSpeed;
 import pl.grzeslowski.smarthome.rf24.helpers.Pins;
 import pl.grzeslowski.smarthome.rf24.helpers.Retry;
 
+import static java.lang.String.format;
+
 public class ArgsReader {
     private static final String CMD_CE = "ce";
     private static final String CMD_CSN = "csn";
     private static final String CMD_CLOCK_SPEED = "clock_speed";
     private static final String RETRY_DELAY = "retry_delay";
     private static final String RETRY_NUMBER = "retry_number";
+    private static final String CMD_NUMBER_OF_SENDS = "number_of_sends";
 
     private static final short DEFAULT_CE = 22;
     private static final short DEFAULT_CSN = 8;
     private static final ClockSpeed DEFAULT_CLOCK_SPEED = ClockSpeed.BCM2835_SPI_SPEED_8MHZ;
     private static final short DEFAULT_RETRY_DELAY = 15;
     private static final short DEFAULT_RETRY_NUMBER = 15;
+    private static final long DEFAULT_NUMBER_OF_SENDS = 100;
 
     protected final Options options = new Options();
     private final CommandLineParser parser = new DefaultParser();
@@ -25,6 +29,8 @@ public class ArgsReader {
         options.addOption(CMD_CE, true, "CE pin");
         options.addOption(CMD_CSN, true, "CSN pin");
         options.addOption(CMD_CLOCK_SPEED, true, "Clock speed pin");
+        options.addOption(CMD_NUMBER_OF_SENDS, true, format("How much messages server should send. Default %s.",
+                DEFAULT_NUMBER_OF_SENDS));
     }
 
     public Pins readPins(String[] args) {
@@ -40,6 +46,10 @@ public class ArgsReader {
         short retryNumber = read(args, RETRY_NUMBER, DEFAULT_RETRY_NUMBER);
 
         return new Retry(retryDelay, retryNumber);
+    }
+
+    public long readNumberOfSends(String[] args) {
+        return read(args, CMD_NUMBER_OF_SENDS, DEFAULT_NUMBER_OF_SENDS);
     }
 
     protected CommandLine parse(String[] args) {
@@ -60,6 +70,15 @@ public class ArgsReader {
     }
 
     protected int read(String[] args, String option, int defaultValue) {
+        final CommandLine cmd = parse(args);
+        if (cmd.hasOption(option)) {
+            return new Integer(cmd.getOptionValue(option));
+        } else {
+            return defaultValue;
+        }
+    }
+
+    protected long read(String[] args, String option, long defaultValue) {
         final CommandLine cmd = parse(args);
         if (cmd.hasOption(option)) {
             return new Integer(cmd.getOptionValue(option));

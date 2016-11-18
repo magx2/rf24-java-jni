@@ -39,6 +39,7 @@ public class Rf24PingPongServerExample {
     private final Pins pins;
     private final Retry retry;
     private final Payload payload;
+    private final long numberOfSends;
 
     public static void main(String[] args) throws Exception {
         final Rf24PingPongServerExample server = new Rf24PingPongServerExample(args);
@@ -50,6 +51,7 @@ public class Rf24PingPongServerExample {
         pins = argsReader.readPins(args);
         retry = argsReader.readRetry(args);
         payload = new Payload((short) (Long.SIZE / Byte.SIZE));
+        numberOfSends = argsReader.readNumberOfSends(args);
 
         rf24 = new Rf24Adapter(pins, retry, payload);
 
@@ -76,7 +78,7 @@ public class Rf24PingPongServerExample {
     }
 
     public void run() throws InterruptedException {
-        for (long counter = 1; true; counter++) {
+        for (long counter = 1; counter <= numberOfSends; counter++) {
             logger.info("Iteration #{}", counter);
 
             // send
