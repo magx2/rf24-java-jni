@@ -34,6 +34,11 @@ public class Rf24PingPongServerExample {
     private final ByteBuffer sendBuffer;
     private final ByteBuffer readBuffer;
 
+    // read from command line
+    private final Pins pins;
+    private final Retry retry;
+    private final Payload payload;
+
     public static void main(String[] args) throws Exception {
         final Rf24PingPongServerExample server = new Rf24PingPongServerExample(args);
         server.init();
@@ -41,9 +46,9 @@ public class Rf24PingPongServerExample {
     }
 
     public Rf24PingPongServerExample(String[] args) {
-        Pins pins = argsReader.readPins(args);
-        Retry retry = argsReader.readRetry(args);
-        Payload payload = new Payload((short) 8);
+        pins = argsReader.readPins(args);
+        retry = argsReader.readRetry(args);
+        payload = new Payload((short) 8);
 
         rf24 = new Rf24Adapter(pins, retry, payload);
 
@@ -57,8 +62,13 @@ public class Rf24PingPongServerExample {
     public void init() {
         logger.info("Init RF24");
         logger.info("Write pipe: {}", WRITE_PIPE);
-        logger.info("Read pipe: {}", READ_PIPE);
+        logger.info("Read  pipe: {}", READ_PIPE);
+        logger.info("Pins: {}", pins);
+        logger.info("Retry: {}", retry);
+        logger.info("Payload: {}", payload);
+
         rf24.init();
+
         if(rf24 instanceof Rf24Adapter) {
             ((Rf24Adapter) rf24).printDetails();
         }
