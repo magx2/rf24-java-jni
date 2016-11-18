@@ -62,6 +62,7 @@ bintray {
 	pkg {
 		repo = 'bigboy'
 		name = project.group
+		userOrg = 'big-boy'
 		desc = 'This is Java JNI wrapper on RF24 library.'
 		websiteUrl = 'https://github.com/magx2/rf24-java-jni'
 		issueTrackerUrl = 'https://github.com/magx2/rf24-java-jni/issues'
