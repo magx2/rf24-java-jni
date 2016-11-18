@@ -120,9 +120,9 @@ public class Rf24PingPongServerExample {
         }
 
         if (wasRead) {
-            long response = readBuffer.getLong();
+            final long response = readBuffer.getLong();
             final long now = new Date().getTime();
-            long roundTripTime = now - response;
+            final long roundTripTime = now - response;
             logger.info("Got {} (now {}), Round trip time {} [s].", response, now, DurationFormatUtils.formatDuration(roundTripTime, "mm:ss", true));
         } else {
             logger.error("Timeout!");
