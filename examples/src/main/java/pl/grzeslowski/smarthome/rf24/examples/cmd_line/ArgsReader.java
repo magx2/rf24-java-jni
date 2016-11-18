@@ -8,12 +8,19 @@ import pl.grzeslowski.smarthome.rf24.helpers.Retry;
 import static java.lang.String.format;
 
 public class ArgsReader {
-    private static final String CMD_CE = "ce";
-    private static final String CMD_CSN = "csn";
-    private static final String CMD_CLOCK_SPEED = "clock_speed";
-    private static final String CMD_RETRY_DELAY = "retry_delay";
-    private static final String CMD_RETRY_NUMBER = "retry_number";
-    private static final String CMD_NUMBER_OF_SENDS = "number_of_sends";
+    private static final String CMD_CE = "p1";
+    private static final String CMD_CSN = "p2";
+    private static final String CMD_CLOCK_SPEED = "cs";
+    private static final String CMD_RETRY_DELAY = "rd";
+    private static final String CMD_RETRY_NUMBER = "rn";
+    private static final String CMD_NUMBER_OF_SENDS = "n";
+
+    private static final String CMD_LONG_CE = "ce";
+    private static final String CMD_LONG_CSN = "csn";
+    private static final String CMD_LONG_CLOCK_SPEED = "clock_speed";
+    private static final String CMD_LONG_RETRY_DELAY = "retry_delay";
+    private static final String CMD_LONG_RETRY_NUMBER = "retry_number";
+    private static final String CMD_LONG_NUMBER_OF_SENDS = "number_of_sends";
 
     private static final short DEFAULT_CE = 22;
     private static final short DEFAULT_CSN = 8;
@@ -26,14 +33,14 @@ public class ArgsReader {
     private final CommandLineParser parser = new DefaultParser();
 
     public ArgsReader() {
-        options.addOption(CMD_CE, true, format("CE pin. Default %s.", DEFAULT_CE));
-        options.addOption(CMD_CSN, true, format("CSN pin. Default %s.", DEFAULT_CSN));
-        options.addOption(CMD_CLOCK_SPEED, true, format("Clock speed pin. Default %s.", DEFAULT_CLOCK_SPEED));
-        options.addOption(CMD_RETRY_DELAY, true, format("How long should wait before sending a retry message. Defaulr %s.",
+        options.addOption(CMD_CE, CMD_LONG_CE, true, format("CE pin. Default %s.", DEFAULT_CE));
+        options.addOption(CMD_CSN, CMD_LONG_CSN, true, format("CSN pin. Default %s.", DEFAULT_CSN));
+        options.addOption(CMD_CLOCK_SPEED, CMD_LONG_CLOCK_SPEED, true, format("Clock speed pin. Default %s.", DEFAULT_CLOCK_SPEED));
+        options.addOption(CMD_RETRY_DELAY, CMD_LONG_RETRY_DELAY, true, format("How long should wait before sending a retry message. Defaulr %s.",
                 DEFAULT_RETRY_DELAY));
-        options.addOption(CMD_RETRY_NUMBER, true, format("How many times should retry sending message. Default %s.",
+        options.addOption(CMD_RETRY_NUMBER, CMD_LONG_RETRY_NUMBER, true, format("How many times should retry sending message. Default %s.",
                 DEFAULT_RETRY_NUMBER));
-        options.addOption(CMD_NUMBER_OF_SENDS, true, format("How much messages server should send. Default %s.",
+        options.addOption(CMD_NUMBER_OF_SENDS, CMD_LONG_NUMBER_OF_SENDS, true, format("How much messages server should send. Default %s.",
                 DEFAULT_NUMBER_OF_SENDS));
     }
 
