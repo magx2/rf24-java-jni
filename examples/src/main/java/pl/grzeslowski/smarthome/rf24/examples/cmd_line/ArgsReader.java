@@ -26,9 +26,9 @@ public class ArgsReader {
     private final CommandLineParser parser = new DefaultParser();
 
     public ArgsReader() {
-        options.addOption(CMD_CE, true, "CE pin");
-        options.addOption(CMD_CSN, true, "CSN pin");
-        options.addOption(CMD_CLOCK_SPEED, true, "Clock speed pin");
+        options.addOption(CMD_CE, true, format("CE pin. Default %s.", DEFAULT_CE));
+        options.addOption(CMD_CSN, true, format("CSN pin. Default %s.", DEFAULT_CSN));
+        options.addOption(CMD_CLOCK_SPEED, true, format("Clock speed pin. Default %s.", DEFAULT_CLOCK_SPEED));
         options.addOption(CMD_RETRY_DELAY, true, format("How long should wait before sending a retry message. Defaulr %s.",
                 DEFAULT_RETRY_DELAY));
         options.addOption(CMD_RETRY_NUMBER, true, format("How many times should retry sending message. Default %s.",
