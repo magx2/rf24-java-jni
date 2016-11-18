@@ -327,7 +327,7 @@ public enum RpiGpio {
         return gpioPin;
     }
 
-    public Optional<RpiGpio> fingForGpioPin(short gpioPin) {
+    public static Optional<RpiGpio> fingForGpioPin(short gpioPin) {
         return stream(RpiGpio.values())
                 .filter(gpio -> gpio.gpioPin == gpioPin)
                 .findFirst();

@@ -20,12 +20,13 @@ repositories {
 }
 
 ext {
-	examples = ['Simple', 'Rf24PingPong']
+	examples = ['Simple', 'Rf24PingPongServerExample']
 }
 
 dependencies {
     compile group: 'commons-cli', name: 'commons-cli', version: '1.3'
     compile rootProject
+	compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.21'
 }
 
 

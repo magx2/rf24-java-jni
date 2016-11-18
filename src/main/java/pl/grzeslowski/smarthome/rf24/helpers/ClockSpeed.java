@@ -33,7 +33,7 @@ public enum ClockSpeed {
         return clockSpeed;
     }
 
-    public Optional<ClockSpeed> findClockSpeed(int clockSpeed) {
+    public static Optional<ClockSpeed> findClockSpeed(int clockSpeed) {
         return stream(ClockSpeed.values())
                 .filter(x -> x.clockSpeed == clockSpeed)
                 .findFirst();

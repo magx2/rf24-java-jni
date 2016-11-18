@@ -10,6 +10,8 @@ import pl.grzeslowski.smarthome.rf24.helpers.Pipe;
 import java.nio.ByteBuffer;
 import java.util.List;
 
+import static java.util.Collections.singletonList;
+
 public interface BasicRf24 extends AutoCloseable {
     /**
      * Begin new transmission to device. Combined with {@see close()} can be invoked multiple times.
@@ -28,6 +30,18 @@ public interface BasicRf24 extends AutoCloseable {
      * @throws ReadRf24Exception when some error connected with reading into pipe occurs
      */
     boolean read(List<Pipe> readPipes, ByteBuffer buffer) throws ReadRf24Exception;
+
+    /**
+     * Does the same what {@see BasicRf24#read} (just pack readPipe into one element list.
+     *
+     * @param readPipe see {@see BasicRf24#read}
+     * @param buffer see {@see BasicRf24#read}
+     * @return see {@see BasicRf24#read}
+     * @throws ReadRf24Exception see {@see BasicRf24#read}
+     */
+    default boolean read(Pipe readPipe, ByteBuffer buffer) throws ReadRf24Exception {
+        return read(singletonList(readPipe), buffer);
+    }
 
     /**
      * Write bytes into the pipe. If needed sets {@param pipe} as writing pipe.
