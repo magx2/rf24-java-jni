@@ -110,7 +110,6 @@ public class Rf24PingPongServerExample {
         try {
             while (!wasRead && System.currentTimeMillis() <= startedAt + WAITING_FOR_RESPONSE_TIME) {
                 wasRead = rf24.read(READ_PIPE, readBuffer);
-                logger.trace("wasRead = {}", wasRead);
             }
         } catch (ReadRf24Exception ex) {
             logger.error("Error while reading!", ex);
