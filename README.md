@@ -9,7 +9,25 @@
 
 Warning: *Remember you need to have ```sudo``` right to run examples!*
 
-**TODO**
+## Ping pong (checking round trip time)
+
+In this 2 examples you can run code on 2 different devices (i.e. Java + Java or Java + Arduino) and check what is the round trip time.
+
+### Server
+
+To run it type (in main dir):
+
+    ./gradlew :examples:runRf24PingPongServerExample
+    
+_Note: you can run Rf24PingPongClientExample.ino on Arduino to have second device that will answer calls._
+
+### Client
+
+To run it type (in main dir):
+
+    ./gradlew :examples:runRf24PingPongClientExample
+
+_Note: you can run Rf24PingPongServerExample.ino on Arduino to have second device that will start pinging this example._
 
 # RF24 
 
