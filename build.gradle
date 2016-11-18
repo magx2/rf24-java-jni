@@ -19,14 +19,6 @@ apply plugin: 'idea'
 
 sourceCompatibility = 1.8
 
-sourceSets {
-	examples {
-		java {
-			srcDir "src/main/examples"
-		}
-	}
-}
-
 repositories {
 	mavenCentral()
 }
