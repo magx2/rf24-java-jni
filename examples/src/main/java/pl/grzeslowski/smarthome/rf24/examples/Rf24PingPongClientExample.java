@@ -1,61 +1,33 @@
 package pl.grzeslowski.smarthome.rf24.examples;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import pl.grzeslowski.smarthome.rf24.BasicRf24;
 import pl.grzeslowski.smarthome.rf24.Rf24Adapter;
-import pl.grzeslowski.smarthome.rf24.examples.cmd_line.ArgsReader;
+import pl.grzeslowski.smarthome.rf24.examples.ping_pong.Rf24PingPongAbstract;
 import pl.grzeslowski.smarthome.rf24.exceptions.ReadRf24Exception;
 import pl.grzeslowski.smarthome.rf24.exceptions.WriteRf24Exception;
-import pl.grzeslowski.smarthome.rf24.helpers.Payload;
-import pl.grzeslowski.smarthome.rf24.helpers.Pins;
 import pl.grzeslowski.smarthome.rf24.helpers.Pipe;
-import pl.grzeslowski.smarthome.rf24.helpers.Retry;
 
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
 import java.util.concurrent.TimeUnit;
 
-public class Rf24PingPongClientExample {
+public class Rf24PingPongClientExample extends Rf24PingPongAbstract {
     static {
         Rf24Adapter.loadLibrary();
     }
 
-    private static final Logger logger = LoggerFactory.getLogger(Rf24PingPongClientExample.class);
     private static final Pipe WRITE_PIPE = Rf24PingPongServerExample.READ_PIPE;
     private static final Pipe READ_PIPE = Rf24PingPongServerExample.WRITE_PIPE;
     private static final long TIME_TO_SLEEP = TimeUnit.SECONDS.toMillis(1);
 
-    private final ArgsReader argsReader = new ArgsReader();
-    private final BasicRf24 rf24;
-    private final ByteBuffer sendBuffer;
-    private final ByteBuffer readBuffer;
 
     public static void main(String[] args) throws Exception {
-        final Rf24PingPongClientExample server = new Rf24PingPongClientExample(args);
-        server.init();
-        server.run();
+        runExample(new Rf24PingPongClientExample(args));
     }
 
     public Rf24PingPongClientExample(String[] args) {
-        Pins pins = argsReader.readPins(args);
-        Retry retry = argsReader.readRetry(args);
-        Payload payload = new Payload((short) (Long.SIZE / Byte.SIZE));
-
-        rf24 = new Rf24Adapter(pins, retry, payload);
-
-        sendBuffer = ByteBuffer.allocate(Long.SIZE / Byte.SIZE);
-        sendBuffer.order(ByteOrder.LITTLE_ENDIAN);
-
-        readBuffer = ByteBuffer.allocate(Long.SIZE / Byte.SIZE);
-        readBuffer.order(ByteOrder.LITTLE_ENDIAN);
+        super(args, WRITE_PIPE, READ_PIPE);
     }
 
-    public void init() {
-        rf24.init();
-    }
-
-    private void run() throws InterruptedException {
+    @Override
+    public void run() throws InterruptedException {
         for (; ; ) {
             boolean read = false;
             try {
