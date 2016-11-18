@@ -22,8 +22,8 @@ public class Rf24PingPongClientExample {
     }
 
     private static final Logger logger = LoggerFactory.getLogger(Rf24PingPongClientExample.class);
-    private static final Pipe WRITE_PIPE = new Pipe("2Node");
-    private static final Pipe READ_PIPE = new Pipe("1Node");
+    private static final Pipe WRITE_PIPE = Rf24PingPongServerExample.READ_PIPE;
+    private static final Pipe READ_PIPE = Rf24PingPongServerExample.WRITE_PIPE;
     private static final long TIME_TO_SLEEP = TimeUnit.SECONDS.toMillis(1);
 
     private final ArgsReader argsReader = new ArgsReader();
@@ -56,7 +56,7 @@ public class Rf24PingPongClientExample {
     }
 
     private void run() throws InterruptedException {
-        for(;;) {
+        for (; ; ) {
             boolean read = false;
             try {
                 read = rf24.read(READ_PIPE, readBuffer);
@@ -64,7 +64,7 @@ public class Rf24PingPongClientExample {
                 logger.error("Read error!", ex);
             }
 
-            if(read) {
+            if (read) {
                 int payload = readBuffer.getInt();
                 readBuffer.clear();
 
