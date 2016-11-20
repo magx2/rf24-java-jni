@@ -109,3 +109,10 @@ tasks.clean.dependsOn {
 task wrapper(type: Wrapper) {
 	gradleVersion = '3.1'
 }
+
+task jarWithDependencies(type: Jar) {
+	group "build"
+	baseName = project.name + '-with-dependencies'
+	from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+	with jar
+}
