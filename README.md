@@ -169,7 +169,7 @@ Use this library with your app. Remember to load it in your java code before usi
 public class Main {
     static {
         try {
-            System.loadLibrary(RF24_LIB_NAME);
+            System.loadLibrary("rf24bcmjava");
         } catch (UnsatisfiedLinkError e) {
             // handel this if you want
         }
