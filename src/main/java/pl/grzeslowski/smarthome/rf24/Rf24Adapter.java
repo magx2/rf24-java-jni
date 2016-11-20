@@ -92,7 +92,7 @@ public class Rf24Adapter implements BasicRf24 {
 
     @Override
     public synchronized void init() {
-        if (rf24 != null) {
+        if (isInit()) {
             throw new IllegalStateException(format("RF24 is already initialized! You need to call close() first! RF24: [%s]", rf24));
         }
         try {
@@ -106,8 +106,13 @@ public class Rf24Adapter implements BasicRf24 {
         }
     }
 
+    @Override
+    public synchronized boolean isInit() {
+        return rf24 != null;
+    }
+
     private void startListening() {
-        assert rf24 != null;
+        assert isInit();
         rf24.startListening();
         try {
             TimeUnit.MILLISECONDS.sleep(DELAY_AFTER_STARTING_LISTENING);
@@ -118,7 +123,7 @@ public class Rf24Adapter implements BasicRf24 {
 
     @Override
     public synchronized void close() {
-        if (rf24 == null) {
+        if (!isInit()) {
             throw new IllegalStateException("RF24 was not initialized! Please call init() before calling close().");
         }
         try {

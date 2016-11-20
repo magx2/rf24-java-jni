@@ -21,6 +21,13 @@ public interface BasicRf24 extends AutoCloseable {
     void init() throws InitRf24Exception;
 
     /**
+     * Check if object is initialized.
+     *
+     * @return true if object is initialised
+     */
+    boolean isInit();
+
+    /**
      * Reads data from <b>only one</b> pipe at time and writes it to the buffer.
      *
      * @param readPipes pipes to read from, cannot be null or empty
