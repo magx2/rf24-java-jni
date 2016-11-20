@@ -22,7 +22,13 @@ Add to ```pom.xml```:
 Add to ```build.gradle```:
 
 ```gradle
-compile 'pl.grzeslowski.smarthome:rf24:1.0.0'
+repositories {
+	maven {url 'https://dl.bintray.com/big-boy/bigboy'}
+}
+
+dependencies {
+	compile 'pl.grzeslowski.smarthome:rf24:1.0.0'
+}
 ```
 
 ### Jars
