@@ -90,9 +90,11 @@ public class Rf24PingPongServerExample extends Rf24PingPongAbstract {
         readBuffer.clear();
         final long startedAt = new Date().getTime();
         boolean wasRead = false;
+        boolean timeout = false;
         try {
-            while (!wasRead && new Date().getTime() <= startedAt + WAITING_FOR_RESPONSE_TIME) {
+            while (!wasRead && !timeout) {
                 wasRead = rf24.read(READ_PIPE, readBuffer);
+                timeout = !wasRead && new Date().getTime() > startedAt + WAITING_FOR_RESPONSE_TIME;
             }
         } catch (ReadRf24Exception ex) {
             logger.error("Error while reading!", ex);
