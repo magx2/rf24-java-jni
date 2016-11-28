@@ -46,6 +46,25 @@ public class Rf24PingPongServerExample extends Rf24PingPongAbstract {
             // Sleep
             Thread.sleep(TIME_TO_SLEEP);
         }
+
+        logger.info(
+                String.format("SENT: %d/%d, RECEIVED: %d, LOST: %d (%.1f) where: NOT SEND: %d, TIMEOUT: %d",
+                        statistics.howManySent(),
+                        numberOfSends,
+                        statistics.howManyReceivedBack(),
+                        statistics.howManyLost(),
+                        statistics.howManyLostInPercentage(),
+                        statistics.howManyErrorWhileSending(),
+                        statistics.howManyTimeoutMessage())
+        );
+        logger.info(
+                String.format("RoundTrip:\n" +
+                                "MAX: %d, MIN: %d, AVG: %d",
+                        statistics.maxRoundTripTime().orElse(-1L),
+                        statistics.minRoundTripTime().orElse(-1L),
+                        statistics.avgRoundTripTime()
+                        )
+        );
     }
 
     private void send() {
@@ -57,9 +76,13 @@ public class Rf24PingPongServerExample extends Rf24PingPongAbstract {
             final boolean wrote = rf24.write(WRITE_PIPE, sendBuffer.array());
             if (!wrote) {
                 logger.error("Failed sending {}!", time);
+                statistics.errorWhileSending();
+            } else {
+                statistics.messageSent();
             }
         } catch (WriteRf24Exception ex) {
             logger.error("Failed sending " + time + "!", ex);
+            statistics.errorWhileSending();
         }
     }
 
@@ -80,8 +103,10 @@ public class Rf24PingPongServerExample extends Rf24PingPongAbstract {
             final long now = new Date().getTime();
             final long roundTripTime = now - response;
             logger.info("Got {}, Round trip time {} [s].", response, DurationFormatUtils.formatDuration(roundTripTime, "ss.SS", true));
+            statistics.receivedBack(roundTripTime);
         } else {
             logger.error("Timeout!");
+            statistics.timeoutMessage();
         }
     }
 }

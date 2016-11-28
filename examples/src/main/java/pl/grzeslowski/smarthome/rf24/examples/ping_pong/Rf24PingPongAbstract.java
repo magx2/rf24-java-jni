@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import pl.grzeslowski.smarthome.rf24.BasicRf24;
 import pl.grzeslowski.smarthome.rf24.Rf24Adapter;
 import pl.grzeslowski.smarthome.rf24.examples.cmd_line.ArgsReader;
+import pl.grzeslowski.smarthome.rf24.examples.stats.Statistics;
 import pl.grzeslowski.smarthome.rf24.helpers.Payload;
 import pl.grzeslowski.smarthome.rf24.helpers.Pins;
 import pl.grzeslowski.smarthome.rf24.helpers.Pipe;
@@ -25,6 +26,7 @@ public abstract class Rf24PingPongAbstract implements AutoCloseable {
     protected final ByteBuffer readBuffer = ByteBuffer.allocate(Long.SIZE / Byte.SIZE);
 
     protected final BasicRf24 rf24;
+    protected final Statistics statistics = new Statistics();
 
     // read from command line
     private final Pins pins;
