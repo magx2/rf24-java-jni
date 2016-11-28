@@ -91,7 +91,7 @@ public class Rf24PingPongServerExample extends Rf24PingPongAbstract {
         final long startedAt = new Date().getTime();
         boolean wasRead = false;
         try {
-            while (!wasRead && System.currentTimeMillis() <= startedAt + WAITING_FOR_RESPONSE_TIME) {
+            while (!wasRead && new Date().getTime() <= startedAt + WAITING_FOR_RESPONSE_TIME) {
                 wasRead = rf24.read(READ_PIPE, readBuffer);
             }
         } catch (ReadRf24Exception ex) {
