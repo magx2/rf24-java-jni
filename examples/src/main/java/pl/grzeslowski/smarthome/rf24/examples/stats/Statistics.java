@@ -66,8 +66,8 @@ public class Statistics {
                 .min(Long::compareTo);
     }
 
-    public long avgRoundTripTime() {
+    public double avgRoundTripTime() {
         return roundTripTimes.stream()
-                .reduce(0L, (acc, roundTripTime) -> acc + roundTripTime);
+                .reduce(0L, (acc, roundTripTime) -> acc + roundTripTime) / (double) roundTripTimes.size();
     }
 }
