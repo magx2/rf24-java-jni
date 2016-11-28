@@ -58,7 +58,7 @@ public class Rf24PingPongServerExample extends Rf24PingPongAbstract {
                         statistics.howManyTimeoutMessage())
         );
         logger.info(
-                String.format("RoundTrip MAX: %d, MIN: %d, AVG: %d",
+                String.format("RoundTrip MAX: %d [ms], MIN: %d [ms], AVG: %d [ms]",
                         statistics.maxRoundTripTime().orElse(-1L),
                         statistics.minRoundTripTime().orElse(-1L),
                         statistics.avgRoundTripTime()
