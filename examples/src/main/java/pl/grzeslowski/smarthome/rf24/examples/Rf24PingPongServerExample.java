@@ -48,7 +48,7 @@ public class Rf24PingPongServerExample extends Rf24PingPongAbstract {
         }
 
         logger.info(
-                String.format("SENT: %d/%d, RECEIVED: %d, LOST: %d (%.1f) where: NOT SEND: %d, TIMEOUT: %d",
+                String.format("SENT: %d/%d, RECEIVED: %d, LOST: %d (%.1f%%) where: NOT SEND: %d, TIMEOUT: %d",
                         statistics.howManySent(),
                         numberOfSends,
                         statistics.howManyReceivedBack(),
@@ -58,8 +58,7 @@ public class Rf24PingPongServerExample extends Rf24PingPongAbstract {
                         statistics.howManyTimeoutMessage())
         );
         logger.info(
-                String.format("RoundTrip:\n" +
-                                "MAX: %d, MIN: %d, AVG: %d",
+                String.format("RoundTrip MAX: %d, MIN: %d, AVG: %d",
                         statistics.maxRoundTripTime().orElse(-1L),
                         statistics.minRoundTripTime().orElse(-1L),
                         statistics.avgRoundTripTime()
